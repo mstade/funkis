@@ -8,5 +8,5 @@ Not much to see here yet.
 Status
 ------
 
-[![Build Status](https://travis-ci.org/mstade/anropa.png?branch=master)](https://travis-ci.org/mstade/anropa)
-[![Coverage Status](https://coveralls.io/repos/mstade/anropa/badge.png)](https://coveralls.io/r/mstade/anropa)
+[![Build Status](https://travis-ci.org/mstade/funkis.png?branch=master)](https://travis-ci.org/mstade/funkis)
+[![Coverage Status](https://coveralls.io/repos/mstade/funkis/badge.png)](https://coveralls.io/r/mstade/funkis)
