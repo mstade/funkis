@@ -3,7 +3,8 @@ const expect = require('chai').expect
 
 describe('lt', function() {
   const tests =
-        [ [ [1, 2], true        ]
+        [ [ [1], true           ]
+        , [ [1, 2], true        ]
         , [ [2, 1], false       ]
         , [ [1, 2, 3], true     ]
         , [ [1, 2, 4, 3], false ]
