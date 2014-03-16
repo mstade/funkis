@@ -2,7 +2,7 @@ const expect = require('chai').expect
     , isObj  = require('../lib/isObj')
     , isArr  = require('../lib/isArr')
     , each   = require('../lib/each')
-    , str    = require('../lib/str')
+    , src    = require('../lib/src')
     
 
 describe('isObj', function() {
@@ -15,7 +15,7 @@ describe('isObj', function() {
     ]
     ,
     function(x) {
-      const n = isArr(x)? x[1] : str(x)
+      const n = isArr(x)? x[1] : src(x)
 
       isArr(x) && (x = x[0])
 
@@ -46,7 +46,7 @@ describe('isObj', function() {
     ]
     ,
     function(x) {
-      const n = isArr(x)? x[1] : str(x)
+      const n = isArr(x)? x[1] : src(x)
 
       isArr(x) && (x = x[0])
 

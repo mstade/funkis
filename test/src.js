@@ -1,8 +1,8 @@
 const expect = require('chai').expect
     , each   = require('../lib/each')
-    , str    = require('../lib/str')
+    , src    = require('../lib/src')
 
-describe('str', function() {
+describe('src', function() {
   each(
     [ [[], '[]']
     , [{}, '{}']
@@ -14,14 +14,14 @@ describe('str', function() {
     , [false, 'false']
     , [undefined, 'undefined']
     , [null, 'null']
-    , ['', '']
-    , ['hello', 'hello']
+    , ['', '""']
+    , ['hello', '"hello"']
     ]
     ,
     function(test) {
       describe('when given `' + test[1] + '`', function() {
         it('should return \'' + test[1] + '\'', function() {
-          expect(str(test[0])).to.equal(test[1])
+          expect(src(test[0])).to.equal(test[1])
         })
       })
     }

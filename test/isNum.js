@@ -2,7 +2,7 @@ const expect = require('chai').expect
     , isNum  = require('../lib/isNum')
     , isArr  = require('../lib/isArr')
     , each   = require('../lib/each')
-    , str    = require('../lib/str')
+    , src    = require('../lib/src')
     
 
 describe('isNum', function() {
@@ -21,7 +21,7 @@ describe('isNum', function() {
     ]
     ,
     function(x) {
-      const n = isArr(x)? x[1] : str(x)
+      const n = isArr(x)? x[1] : src(x)
 
       isArr(x) && (x = x[0])
 
@@ -44,7 +44,7 @@ describe('isNum', function() {
     ]
     ,
     function(x) {
-      describe('when given `' + str(x) + '`', function() {
+      describe('when given `' + src(x) + '`', function() {
         it('should return false', function() {
           expect(isNum(x)).to.be.false
         })

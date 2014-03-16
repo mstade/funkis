@@ -1,7 +1,7 @@
 const expect = require('chai').expect
     , each   = require('../lib/each')
     , isFn   = require('../lib/isFn')
-    , str    = require('../lib/str')
+    , src    = require('../lib/src')
     
 
 describe('isFn', function() {
@@ -15,7 +15,7 @@ describe('isFn', function() {
     ]
     ,
     function(x) {
-      describe('when given `' + str(x) + '`', function() {
+      describe('when given `' + src(x) + '`', function() {
         it('should return true', function() {
           expect(isFn(x)).to.be.true
         })
@@ -36,7 +36,7 @@ describe('isFn', function() {
     ]
     ,
     function(x) {
-      describe('when given `' + str(x) + '`', function() {
+      describe('when given `' + src(x) + '`', function() {
         it('should return false', function() {
           expect(isFn(x)).to.be.false
         })

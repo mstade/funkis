@@ -1,7 +1,7 @@
 const expect = require('chai').expect
     , isNaN  = require('../lib/isNaN')
     , each   = require('../lib/each')
-    , str    = require('../lib/str')
+    , src    = require('../lib/src')
     
 
 describe('isNaN', function() {
@@ -24,7 +24,7 @@ describe('isNaN', function() {
     ]
     ,
     function(x) {
-      describe('when given `' + str(x) + '`', function() {
+      describe('when given `' + src(x) + '`', function() {
         it('should return false', function() {
           expect(isNaN(x)).to.be.false
         })

@@ -1,7 +1,7 @@
 const isUndef = require('../lib/isUndef')
     , expect  = require('chai').expect
     , each   = require('../lib/each')
-    , str    = require('../lib/str')
+    , src    = require('../lib/src')
     
 
 describe('isUndef', function() {
@@ -23,7 +23,7 @@ describe('isUndef', function() {
     ]
     ,
     function(x) {
-      describe('when given `' + str(x) + '`', function() {
+      describe('when given `' + src(x) + '`', function() {
         it('should return false', function() {
           expect(isUndef(x)).to.be.false
         })

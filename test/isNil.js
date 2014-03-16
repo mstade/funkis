@@ -1,7 +1,7 @@
 const expect = require('chai').expect
     , isNil  = require('../lib/isNil')
     , each   = require('../lib/each')
-    , str    = require('../lib/str')
+    , src    = require('../lib/src')
     
 
 describe('isNil', function() {
@@ -11,7 +11,7 @@ describe('isNil', function() {
     ]
     ,
     function(x) {
-      describe('when given `' + str(x) + '`', function() {
+      describe('when given `' + src(x) + '`', function() {
         it('should return true', function() {
           expect(isNil(x)).to.be.true
         })
@@ -28,7 +28,7 @@ describe('isNil', function() {
     ]
     ,
     function(x) {
-      describe('when given `' + str(x) + '`', function() {
+      describe('when given `' + src(x) + '`', function() {
         it('should return false', function() {
           expect(isNil(x)).to.be.false
         })
