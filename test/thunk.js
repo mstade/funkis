@@ -12,6 +12,7 @@ describe('thunk', function() {
 
         expect(th).to.be.a('function')
         expect(th.length).to.equal(0)
+        expect(th.name).to.equal('thunk')
       })
 
       describe('when called', function() {
@@ -85,6 +86,7 @@ describe('thunk', function() {
         const th = thunk(function() {}, 1, 2, 3)
         expect(th).to.be.a('function')
         expect(th.length).to.equal(0)
+        expect(th.name).to.equal('thunk')
       })
 
       describe('and when called', function() {
@@ -212,6 +214,14 @@ describe('thunk', function() {
   })
 
   describe('when given a non-function `val` as the first parameter', function() {
+    it('should return a zero arity thunk', function() {
+      const th = thunk(function() {})
+
+      expect(th).to.be.a('function')
+      expect(th.length).to.equal(0)
+      expect(th.name).to.equal('thunk')
+    })
+
     describe('and when called', function() {
       it('should return `val` and nothing else', function() {
         each(
