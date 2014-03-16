@@ -14,6 +14,8 @@ describe('str', function() {
     , [false, 'false']
     , [undefined, 'undefined']
     , [null, 'null']
+    , ['', '']
+    , ['hello', 'hello']
     ]
     ,
     function(test) {
