@@ -12,7 +12,7 @@ describe('type', function() {
   , ['undefined', void 0]
   ].forEach(function(test) {
     describe('when called with ' + test[1], function() {
-      it('should return `' + test[0] + '`', function() {
+      it('should return \'' + test[0] + '\'', function() {
         expect(type(test[1])).to.equal(test[0])
       })
     })
