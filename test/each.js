@@ -1,39 +1,55 @@
 const expect = require('chai').expect
     , each   = require('../lib/each')
-    , spy    = require('sinon').spy
-
-require('chai').use(require('sinon-chai'))
-require('mocha-sinon')
+    , src    = require('../lib/src')
 
 describe('each', function() {
-  describe('when given an array', function() {
-    it('should call the supplied callback for each item', function() {
-      const callee = spy()
+  each(
+    [ [1, 2, 3, 4, 5]
+    , [[1, 2], [4, 5]]
+    ]
+    , function(test) {
+      describe('when given `' + src(test).slice(1, -1) + '`', function() {
+        describe('and the function `fn`', function() {
+          var i = 0
 
-      each([1, 2, 3, 4, 5], callee)
+          const fn = function(x) {
+            expect(x).to.equal(test[i++])
+          }
 
-      expect(callee).to.have.callCount(5)
-      expect(callee.args).to.eql([[1], [2], [3], [4], [5]])
-    })
-  })
+          const times = test.length + ' time' + (test.length > 1? 's' : '')
 
-  describe('when given an object', function() {
-    it('should call the supplied callback for each enumerable property', function() {
-      const callee = spy()
+          it('should call `fn` ' + times +'; once for each item', function() {
+            each(test, fn)
+            expect(i).to.equal(test.length)
+          })
+        })
+      })
+    }
+  )
 
-      each({ foo: 1, bar: true, baz: 'wibble' }, callee)
+  const obj = { foo: 1, bar: true, baz: 'wibble' }
 
-      expect(callee).to.have.callCount(3)
-      expect(callee.args).to.eql([ [{foo: 1}], [{bar: true}], [{baz: 'wibble'}] ])
+  describe('when given `' + src(obj) + '`', function() {
+    describe('and the function `fn`', function() {
+      const prop = [{foo: 1}, {bar: true}, {baz: 'wibble'}]
+
+      var i = 0
+
+      const fn = function(x) {
+        expect(x).to.eql(prop[i++])
+      }
+
+      it('should call `fn` 3 times; once for each enumerable property', function() {
+        each(obj, fn)
+        expect(i).to.equal(3)
+      })
     })
   })
 
   describe('when given an empty sequence', function() {
-    it('should not call the supplied callback', function() {
-      const callee = spy()
-
-      each([], callee)
-      expect(callee).to.not.have.been.called
+    it('should do nothing', function() {
+      const fn = function(x) { throw new Error("shouldn't get here!") }
+      each(null, fn)
     })
   })
 })
