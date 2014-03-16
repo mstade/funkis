@@ -4,7 +4,8 @@
   "description": "Functional programming in JavaScript.",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul test _mocha --report html -- -R spec"
+    "test": "istanbul test mocha --report html -- -R spec",
+    "foo": "export"
   },
   "author": "Marcus Stade",
   "license": "MIT",
@@ -13,7 +14,10 @@
     "mocha": "~1.17.1",
     "chai": "~1.9.0",
     "coveralls": "~2.8.0",
-    "mocha-lcov-reporter": "0.0.1"
+    "mocha-lcov-reporter": "0.0.1",
+    "sinon": "~1.9.0",
+    "mocha-sinon": "~1.1.0",
+    "sinon-chai": "~2.5.0"
   },
   "repository": {
     "type": "git",
