@@ -32,6 +32,11 @@ describe('thunk', function() {
 
           th(1, 2, 3)
         })
+
+        it('should return whatever `fn` returns', function() {
+          const th = thunk(function() { return 'hello' })
+          expect(th()).to.equal('hello')
+        })
       })
     })
 
@@ -65,7 +70,12 @@ describe('thunk', function() {
 
               th(1, 2, 3, 4)
             })
-          })          
+
+            it('should return whatever `fn` returns', function() {
+              const th = thunk(function(a) { return a }, 'hello')
+              expect(th()).to.equal('hello')
+            })
+          })
         })
       }
     )
@@ -100,6 +110,11 @@ describe('thunk', function() {
           }, 1, false, 'c')
 
           th(1, 2, 3, 4)
+        })
+
+        it('should return whatever `fn` returns', function() {
+          const th = thunk(function(a, b) { return a + ' ' + b }, 'hello', 'world')
+          expect(th()).to.equal('hello world')
         })
       })
     })
@@ -196,11 +211,28 @@ describe('thunk', function() {
     })
   })
 
-  describe('when given a non-function as the first parameter', function() {
-    it('should throw a TypeError', function() {
-      expect(function() {
-        thunk(null)
-      }).to.throw(TypeError)
+  describe('when given a non-function `val` as the first parameter', function() {
+    describe('and when called', function() {
+      it('should return `val` and nothing else', function() {
+        each(
+          [ 0
+          , 1
+          , true
+          , false
+          , ''
+          , 'hello'
+          , []
+          , {}
+          , null
+          , undefined
+          ]
+          ,
+          function(val) {
+            const th = thunk(val)
+            expect(th()).to.equal(val)
+          }
+        )
+      })
     })
   })
 })
