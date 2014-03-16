@@ -27,4 +27,13 @@ describe('each', function() {
       expect(callee.args).to.eql([ [{foo: 1}], [{bar: true}], [{baz: 'wibble'}] ])
     })
   })
+
+  describe('when given an empty sequence', function() {
+    it('should not call the supplied callback', function() {
+      const callee = spy()
+
+      each([], callee)
+      expect(callee).to.not.have.been.called
+    })
+  })
 })
