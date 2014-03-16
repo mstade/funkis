@@ -1,7 +1,16 @@
 const expect = require('chai').expect
-    , slice = require('../lib/slice')
+    , slice  = require('../lib/slice')
+    , each   = require('../lib/each')
 
 describe('slice', function() {
+  describe('given a falsy value', function() {
+    it('should return null', function() {
+      each([null, undefined, 0, false, ''], function(test) {
+        expect(slice(test)).to.equal(null)
+      })
+    })
+  })
+
   describe('given the array [1,2,3,4,5]', function() {
     const arr = [1, 2, 3, 4, 5]
 
