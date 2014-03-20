@@ -33,11 +33,6 @@ describe('variadic', function() {
       describe('when given `' + src(fn) + '`', function() {
         const varfn = variadic(fn)
 
-        it('should return a function of length ' + (fn.length - 1), function() {
-          expect(varfn).to.be.a('function')
-          expect(varfn.length).to.equal(fn.length - 1)
-        })
-
         each(test.slice(1), function(args) {
           const argsrc = args.length? '`' + src(args).slice(1, -1) + '`' : 'nothing'
 
