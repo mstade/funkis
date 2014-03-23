@@ -4,6 +4,14 @@ const expect = require('chai').expect
     , nil    = require('../lib/nil')
 
 describe('count', function() {
+  describe('when given an uncountable object', function() {
+    it('should throw a TypeError', function() {
+      expect(function() {
+        count(false)
+      }).to.throw(TypeError)
+    })
+  })
+
   describe('when given an array', function() {
     it('should return its length', function() {
       expect(count([1, 2, 3])).to.equal(3)
@@ -54,9 +62,9 @@ describe('count', function() {
     })
   })
 
-  describe('when given anything falsy', function() {
+  describe('when given anything empty', function() {
     it('should return 0', function() {
-      [0, null, undefined, false, ""].forEach(function(falsy) {
+      [0, null, undefined, "", [], {}].forEach(function(falsy) {
         expect(count(falsy)).to.equal(0)
       })
     })
