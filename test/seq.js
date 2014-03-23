@@ -2,10 +2,11 @@ const expect = require('chai').expect
     , each   = require('../lib/each')
     , type   = require('../lib/type')
     , seq    = require('../lib/seq')
+    , nil    = require('../lib/nil')
 
 describe('seq', function() {
   describe('when given an empty sequence or null value', function() {
-    it('should return null', function() {
+    it('should return nil', function() {
       each(
         [ null
         , undefined
@@ -14,7 +15,7 @@ describe('seq', function() {
         , {}
         ]
         , function(empty) {
-          expect(seq(empty)).to.equal(null)
+          expect(seq(empty)).to.equal(nil)
         }
       )
     })
