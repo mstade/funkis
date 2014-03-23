@@ -2,11 +2,12 @@ const expect = require('chai').expect
     , isNil  = require('../lib/isNil')
     , each   = require('../lib/each')
     , src    = require('../lib/src')
-    
+    , nil    = require('../lib/nil')
 
 describe('isNil', function() {
   each(
-    [ null
+    [ nil
+    , null
     , undefined
     ]
     ,
