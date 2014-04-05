@@ -42,22 +42,17 @@ describe('count', function() {
   })
 
   describe('when given a seq', function () {
-    describe('and when the seq length is defined', function() {
+    describe('and when the length is defined', function() {
       it('should return it', function() {
         const s = seq([1, 2, 3])
         expect(count(s)).to.equal(3)
       })
     })
 
-    describe('but when the seq length is undefined', function() {
-      it('should try to count it', function() {
-        const s = seq(0, next)
-        expect(count(s)).to.equal(5)
-
-        function next() {
-          const n = this + 1
-          return n < 5? n : nil
-        }
+    describe('but when the length is undefined', function() {
+      it('should return undefined', function() {
+        const s = seq(Math.random)
+        expect(count(s)).to.equal(undefined)
       })
     })
   })
