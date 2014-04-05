@@ -16,8 +16,8 @@ describe('constantly', function() {
       describe('when called with the value `' + src(val) + '`', function() {
         const v = constantly(val)
 
-        it('should return a function called `constantly`', function() {
-          expect(v.name).to.equal('constantly')
+        it('should return a function called `constant`', function() {
+          expect(v.name).to.equal('constant')
         })
 
         describe('that when called with no arguments', function() {
