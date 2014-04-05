@@ -1,8 +1,11 @@
 const expect = require('chai').expect
+    , count  = require('../lib/count')
     , each   = require('../lib/each')
+    , take   = require('../lib/take')
     , type   = require('../lib/type')
     , seq    = require('../lib/seq')
     , nil    = require('../lib/nil')
+    , src    = require('../lib/src')
 
 describe('seq', function() {
   describe('when given an empty sequence or null value', function() {
@@ -53,17 +56,17 @@ describe('seq', function() {
       , ['H','e','l','l','o']
       ]
     ], function(t) {
-      describe('when given the ' + type(t[0]) + ': ' + t[0], function() {
+      describe('when given the ' + type(t[0]) + ': ' + src(t[0]), function() {
         var s = seq(t[0])
 
-        it('should return a sequence', function() {
+        it('should return an equivalent sequence', function() {
           var i = 0
 
           each(s, function(d) {
             expect(d).to.eql(t[1][i++])
           })
 
-          expect(i).to.equal(s.length)
+          expect(s.length).to.equal(t[1].length)
         })
       })
     }
@@ -71,9 +74,7 @@ describe('seq', function() {
 
   each(
     [ true
-    , false
-    , 1
-    , 0
+    , 666
     ], function(test) {
       describe('when given a ' + type(test), function() {
         it('should throw an error', function() {
@@ -84,11 +85,11 @@ describe('seq', function() {
   )
 
   describe('when given a string with unicode shenanigans', function() {
-    it('should make a sequence of characters where pairs are considered', function() {
+    it('should make a sequence of characters where code pairs are considered', function() {
       const chr = ['I', 'ñ', 't', 'ë', 'r', 'n', 'â', 't', 'i', 'ô', 'n', 'à', 'l', 'i', 'z', 'æ', 't', 'i', 'ø', 'n', '☃', '💩']
           , str = seq(chr.join(''))
 
-      expect(str.length).to.eql(22)
+      expect(str.length).to.eql(chr.length)
 
       var i = 0
 
@@ -104,57 +105,16 @@ describe('seq', function() {
     it('should return the same instance every time', function() {
       const s = seq([1, 2, 3])
 
-      expect(s.tail()).to.equal(s.tail())
+      expect(s.tail).to.equal(s.tail)
     })
   })
 
   describe('when called with a next function' , function() {
     it('should behave as a lazy sequence', function() {
-      var s = seq(0, next)
-        , n = 0
+      var s = seq(Math.random)
 
-      function next() {
-        return this + 1
-      }
-
-      expect(s.length).to.equal(undefined)
-
-      do {
-        expect(s.head()).to.equal(n)
-        s = s.tail()
-      } while (++n < 5)
-
-      expect(n).to.equal(5)
-    })
-
-    describe('and when also given a length', function() {
-      const range = seq(0, next, 5)
-
-      var callcount = 0
-
-      function next() {
-        callcount++
-        return this + 1
-      }
-
-      it('should report the length', function() {
-        expect(range.length).to.equal(5)
-      })
-
-      it('should decrement the length for each call to `tail`', function() {
-        expect(range.tail().length).to.equal(4)
-      })
-
-      it('should still be lazy', function() {
-        expect(callcount).to.equal(1)
-      })
-
-      it('should automatically stop the sequence', function() {
-        const trail = []
-
-        each(range, trail.push.bind(trail))
-
-        expect(trail).to.eql([0, 1, 2, 3, 4])
+      each(take(5, s), function(n) {
+        expect(n).to.be.within(0, 1)
       })
     })
   })
