@@ -1,5 +1,7 @@
 const expect = require('chai').expect
+    , range  = require('../lib/range')
     , type   = require('../lib/type')
+    , seq    = require('../lib/seq')
 
 describe('type', function() {
   [ ['string', 'hello']
@@ -10,6 +12,7 @@ describe('type', function() {
   , ['boolean', true]
   , ['null', null]
   , ['undefined', void 0]
+  , ['seq', seq([1, 2, 3])]
   ].forEach(function(test) {
     describe('when called with ' + test[1], function() {
       it('should return \'' + test[0] + '\'', function() {

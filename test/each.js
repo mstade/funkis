@@ -1,8 +1,25 @@
 const expect = require('chai').expect
     , each   = require('../lib/each')
     , src    = require('../lib/src')
+    , seq    = require('../lib/seq')
 
 describe('each', function() {
+  describe('when given a seq', function() {
+    it('should call `fn` once for each item', function() {
+      const l = [1, 2, 3]
+          , s = seq(l)
+
+      var i = 0
+
+      const fn = function(x) {
+        expect(x).to.equal(l[i++])
+      }
+
+      each(s, fn)
+      expect(i).to.equal(l.length)
+    })
+  })
+
   each(
     [ [1, 2, 3, 4, 5]
     , [[1, 2], [4, 5]]

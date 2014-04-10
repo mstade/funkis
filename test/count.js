@@ -1,7 +1,17 @@
 const expect = require('chai').expect
     , count  = require('../lib/count')
+    , seq    = require('../lib/seq')
+    , nil    = require('../lib/nil')
 
 describe('count', function() {
+  describe('when given an uncountable object', function() {
+    it('should throw a TypeError', function() {
+      expect(function() {
+        count(false)
+      }).to.throw(TypeError)
+    })
+  })
+
   describe('when given an array', function() {
     it('should return its length', function() {
       expect(count([1, 2, 3])).to.equal(3)
@@ -24,9 +34,32 @@ describe('count', function() {
     })
   })
 
-  describe('when given anything falsy', function() {
+  describe('when given an arguments object', function() {
+    it('should return its length', function(done) {
+      expect(count(arguments)).to.equal(1)
+      done()
+    })
+  })
+
+  describe('when given a seq', function () {
+    describe('and when the length is defined', function() {
+      it('should return it', function() {
+        const s = seq([1, 2, 3])
+        expect(count(s)).to.equal(3)
+      })
+    })
+
+    describe('but when the length is undefined', function() {
+      it('should return undefined', function() {
+        const s = seq(Math.random)
+        expect(count(s)).to.equal(undefined)
+      })
+    })
+  })
+
+  describe('when given anything empty', function() {
     it('should return 0', function() {
-      [0, null, undefined, false, ""].forEach(function(falsy) {
+      [0, null, undefined, "", [], {}].forEach(function(falsy) {
         expect(count(falsy)).to.equal(0)
       })
     })
