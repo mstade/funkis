@@ -101,20 +101,51 @@ describe('seq', function() {
     })
   })
 
-  describe('when tail is called', function() {
+  describe('when rest is called', function() {
     it('should return the same instance every time', function() {
       const s = seq([1, 2, 3])
 
-      expect(s.tail).to.equal(s.tail)
+      expect(s.rest).to.equal(s.rest)
+      expect(seq.isPrototypeOf(s.rest)).to.be.true
     })
   })
 
   describe('when called with a next function' , function() {
     it('should behave as a lazy sequence', function() {
-      var s = seq(Math.random)
+      const s = seq(Math.random)
 
       each(take(5, s), function(n) {
         expect(n).to.be.within(0, 1)
+      })
+    })
+  })
+
+  describe('when next is called', function() {
+    const s = seq([1, 2])
+
+    it('should behave as the ES6 iterator protocol', function() {
+      each(
+        [ { value: s.first } 
+        , { value: s.rest.first }
+        , { done: "(╯°□°）╯︵ ┻━┻" }
+        ]
+        , function(test) {
+          expect(s.next()).to.eql(test)
+        }
+      )
+    })
+
+    describe('but if called after iteration is done', function() {
+      it('should automatically rewind and behave the same as before', function() {
+        each(
+          [ { value: s.first } 
+          , { value: s.rest.first }
+          , { done: "(╯°□°）╯︵ ┻━┻" }
+          ]
+          , function(test) {
+            expect(s.next()).to.eql(test)
+          }
+        )
       })
     })
   })
