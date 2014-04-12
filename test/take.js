@@ -1,9 +1,10 @@
-const expect = require('chai').expect
-    , slice  = require('../lib/slice')
-    , each   = require('../lib/each')
-    , take   = require('../lib/take')
-    , vec    = require('../lib/vec')
-    , src    = require('../lib/src')
+const partial = require('../lib/partial')
+    , expect  = require('chai').expect
+    , slice   = require('../lib/slice')
+    , each    = require('../lib/each')
+    , take    = require('../lib/take')
+    , vec     = require('../lib/vec')
+    , src     = require('../lib/src')
 
 describe('take', function() {
   describe('when given a positive number `n`', function() {
@@ -22,5 +23,13 @@ describe('take', function() {
         })
       }
     )
+  })
+
+  describe('when called with an invalid limit', function() {
+    it('should throw a TypeError', function() {
+      each([null, true, undefined, [], {}], function(n) {
+        expect(partial(take, n)).to.throw(TypeError)
+      })
+    })
   })
 })

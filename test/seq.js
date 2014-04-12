@@ -119,6 +119,17 @@ describe('seq', function() {
     })
   })
 
+  describe('when called with a next function and valid length `n`', function() {
+    it('should automatically end the lazy sequence after `n` iterations', function() {
+      const s = seq(Math.random, 3)
+
+      expect(s.length).to.equal(3)
+      expect(s.rest.length).to.equal(2)
+      expect(s.rest.rest.length).to.equal(1)
+      expect(s.rest.rest.rest).to.equal(null)
+    })
+  })
+
   describe('when next is called', function() {
     const s = seq([1, 2])
 
