@@ -4,12 +4,11 @@ const expect = require('chai').expect
     , take   = require('../lib/take')
     , type   = require('../lib/type')
     , seq    = require('../lib/seq')
-    , nil    = require('../lib/nil')
     , src    = require('../lib/src')
 
 describe('seq', function() {
   describe('when given an empty sequence or null value', function() {
-    it('should return nil', function() {
+    it('should return null', function() {
       each(
         [ null
         , undefined
@@ -18,7 +17,7 @@ describe('seq', function() {
         , {}
         ]
         , function(empty) {
-          expect(seq(empty)).to.equal(nil)
+          expect(seq(empty)).to.equal(null)
         }
       )
     })
@@ -127,12 +126,13 @@ describe('seq', function() {
       each(
         [ { value: s.first } 
         , { value: s.rest.first }
-        , { done: "(╯°□°）╯︵ ┻━┻" }
         ]
         , function(test) {
           expect(s.next()).to.eql(test)
         }
       )
+
+      expect(s.next()).to.equal(seq.done)
     })
 
     describe('but if called after iteration is done', function() {
@@ -140,12 +140,13 @@ describe('seq', function() {
         each(
           [ { value: s.first } 
           , { value: s.rest.first }
-          , { done: "(╯°□°）╯︵ ┻━┻" }
           ]
           , function(test) {
             expect(s.next()).to.eql(test)
           }
         )
+
+        expect(s.next()).to.equal(seq.done)
       })
     })
   })

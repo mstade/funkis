@@ -1,20 +1,18 @@
 const expect = require('chai').expect
-    , isNil  = require('../lib/isNil')
+    , isnt   = require('../lib/isnt')
     , each   = require('../lib/each')
     , src    = require('../lib/src')
-    , nil    = require('../lib/nil')
 
-describe('isNil', function() {
+describe('isnt', function() {
   each(
-    [ nil
-    , null
+    [ null
     , undefined
     ]
     ,
     function(x) {
       describe('when given `' + src(x) + '`', function() {
         it('should return true', function() {
-          expect(isNil(x)).to.be.true
+          expect(isnt(x)).to.be.true
         })
       })
     }
@@ -31,7 +29,7 @@ describe('isNil', function() {
     function(x) {
       describe('when given `' + src(x) + '`', function() {
         it('should return false', function() {
-          expect(isNil(x)).to.be.false
+          expect(isnt(x)).to.be.false
         })
       })
     }
