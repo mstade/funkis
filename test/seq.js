@@ -130,6 +130,28 @@ describe('seq', function() {
     })
   })
 
+  describe('when called with a next function that immediately returns `seq.done`', function() {
+    const empty = seq(function() { return seq.done })
+
+    it('should have a zero length', function() {
+      expect(empty.length).to.equal(0)
+    })
+
+    it('should return `null` for first', function() {
+      expect(empty.first).to.equal(null)
+    })
+
+    it('should return `null` for rest', function() {
+      expect(empty.rest).to.equal(null)
+    })
+
+    it('should not iterate when calling `next`', function() {
+      expect(empty.next()).to.equal(seq.done)
+      expect(empty.next()).to.equal(seq.done)
+      expect(empty.next()).to.equal(seq.done)
+    })
+  })
+
   describe('when next is called', function() {
     const s = seq([1, 2])
 
@@ -146,7 +168,7 @@ describe('seq', function() {
       expect(s.next()).to.equal(seq.done)
     })
 
-    describe('but if called after iteration is done', function() {
+    describe('and if called after iteration is done', function() {
       it('should automatically rewind and behave the same as before', function() {
         each(
           [ { value: s.first } 
