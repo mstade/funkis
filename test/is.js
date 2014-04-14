@@ -44,14 +44,14 @@ describe('is', function() {
       ]
       ,
       function(x) {
-        const n = is(x, Array)? x[1] : src(x)
+        const n = is(Array, x)? x[1] : src(x)
 
-        is(x, Array) && (x = x[0])
+        is(Array, x) && (x = x[0])
 
         describe('and when `x = '+n+'`', function() {
           it('should return true', function() {
-            expect(is(x, Number)).to.be.true
-            expect(is(x, 'number')).to.be.true
+            expect(is(Number, x)).to.be.true
+            expect(is('number', x)).to.be.true
           })
         })
       }
@@ -70,8 +70,8 @@ describe('is', function() {
       function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return false', function() {
-            expect(is(x, Number)).to.be.false
-            expect(is(x, 'number')).to.be.false
+            expect(is(Number, x)).to.be.false
+            expect(is('number', x)).to.be.false
           })
         })
       }
@@ -91,8 +91,8 @@ describe('is', function() {
       function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return true', function() {
-            expect(is(x, Function)).to.be.true
-            expect(is(x, 'function')).to.be.true
+            expect(is(Function, x)).to.be.true
+            expect(is('function', x)).to.be.true
           })
         })
       }
@@ -113,8 +113,8 @@ describe('is', function() {
       function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return false', function() {
-            expect(is(x, Function)).to.be.false
-            expect(is(x, 'function')).to.be.false
+            expect(is(Function, x)).to.be.false
+            expect(is('function', x)).to.be.false
           })
         })
       }
@@ -131,8 +131,8 @@ describe('is', function() {
       function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return true', function() {
-            expect(is(x, Array)).to.be.true
-            expect(is(x, 'array')).to.be.true
+            expect(is(Array, x)).to.be.true
+            expect(is('array', x)).to.be.true
           })
         })
       }
@@ -152,8 +152,8 @@ describe('is', function() {
       function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return false', function() {
-            expect(is(x, Array)).to.be.false
-            expect(is(x, 'array')).to.be.false
+            expect(is(Array, x)).to.be.false
+            expect(is('array', x)).to.be.false
           })
         })
       }
@@ -164,7 +164,7 @@ describe('is', function() {
     describe('and when `x = NaN`', function() {
       it('should return true', function() {
         expect(is(NaN, NaN)).to.be.true
-        expect(is(NaN, 'nan')).to.be.true
+        expect(is('nan', NaN)).to.be.true
       })
     })
 
@@ -183,8 +183,8 @@ describe('is', function() {
       function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return false', function() {
-            expect(is(x, NaN)).to.be.false
-            expect(is(x, 'nan')).to.be.false
+            expect(is(NaN, x)).to.be.false
+            expect(is('nan', x)).to.be.false
           })
         })
       }
@@ -201,14 +201,14 @@ describe('is', function() {
       ]
       ,
       function(x) {
-        const n = is(x, Array)? x[1] : src(x)
+        const n = is(Array, x)? x[1] : src(x)
 
-        is(x, Array) && (x = x[0])
+        is(Array, x) && (x = x[0])
 
         describe('and when `x = '+n+'`', function() {
           it('should return true', function() {
-            expect(is(x, Object)).to.be.true
-            expect(is(x, 'Object')).to.be.true
+            expect(is(Object, x)).to.be.true
+            expect(is('Object', x)).to.be.true
           })
         })
       }
@@ -233,14 +233,14 @@ describe('is', function() {
       ]
       ,
       function(x) {
-        const n = is(x, Array)? x[1] : src(x)
+        const n = is(Array, x)? x[1] : src(x)
 
-        is(x, Array) && (x = x[0])
+        is(Array, x) && (x = x[0])
 
         describe('and when `x = '+n+'`', function() {
           it('should return false', function() {
-            expect(is(x, Object)).to.be.false
-            expect(is(x, 'Object')).to.be.false
+            expect(is(Object, x)).to.be.false
+            expect(is('Object', x)).to.be.false
           })
         })
       }
@@ -262,14 +262,14 @@ describe('is', function() {
       ]
       ,
       function(x) {
-        const n = is(x, Array)? x[1] : src(x)
+        const n = is(Array, x)? x[1] : src(x)
 
-        is(x, Array) && (x = x[0])
+        is(Array, x) && (x = x[0])
 
         describe('and when `x = '+n+'`', function() {
           it('should return true', function() {
-            expect(is(x, String)).to.be.true
-            expect(is(x, 'String')).to.be.true
+            expect(is(String, x)).to.be.true
+            expect(is('String', x)).to.be.true
           })
         })
       }
@@ -290,8 +290,8 @@ describe('is', function() {
       function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return false', function() {
-            expect(is(x, String)).to.be.false
-            expect(is(x, 'String')).to.be.false
+            expect(is(String, x)).to.be.false
+            expect(is('String', x)).to.be.false
           })
         })
       }
@@ -302,7 +302,7 @@ describe('is', function() {
     describe('and when `x = undefined`', function() {
       it('should return true', function() {
         expect(is(undefined, undefined)).to.be.true
-        expect(is(undefined, 'undefined')).to.be.true
+        expect(is('undefined', undefined)).to.be.true
       })
     })
 
@@ -320,8 +320,8 @@ describe('is', function() {
       function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return false', function() {
-            expect(is(x, undefined)).to.be.false
-            expect(is(x, 'undefined')).to.be.false
+            expect(is(undefined, x)).to.be.false
+            expect(is('undefined', x)).to.be.false
           })
         })
       }
@@ -332,7 +332,7 @@ describe('is', function() {
     describe('and when `x = null`', function() {
       it('should return true', function() {
         expect(is(null, null)).to.be.true
-        expect(is(null, 'null')).to.be.true
+        expect(is('null', null)).to.be.true
       })
     })
 
@@ -350,8 +350,8 @@ describe('is', function() {
       function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return false', function() {
-            expect(is(x, null)).to.be.false
-            expect(is(x, 'null')).to.be.false
+            expect(is(null, x)).to.be.false
+            expect(is('null', x)).to.be.false
           })
         })
       }
