@@ -1,7 +1,6 @@
 const expect = require('chai').expect
     , count  = require('../lib/count')
     , seq    = require('../lib/seq')
-    , nil    = require('../lib/nil')
 
 describe('count', function() {
   describe('when given an uncountable object', function() {

@@ -3,7 +3,6 @@ const isEmpty = require('../lib/isEmpty')
     , each    = require('../lib/each')
     , seq     = require('../lib/seq')
     , src     = require('../lib/src')
-    , nil     = require('../lib/nil')
 
 describe('isEmpty', function() {
   each(
@@ -11,10 +10,8 @@ describe('isEmpty', function() {
     , ''
     , []
     , {}
-    , nil
     , null
     , undefined
-    , seq(nil, nil, 0)
     ]
     ,
     function(x) {
