@@ -23,6 +23,7 @@ describe('not', function() {
     , true
     , {}, { foo: 'moo' }
     , [], [,,], [1,2,3]
+    , Number, Object, String, Function, function() {}
     ]
     , function(x) {
       describe('when given `'+src(x)+'`', function() {

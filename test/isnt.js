@@ -6,6 +6,7 @@ const expect = require('chai').expect
 describe('isnt', function() {
   each(
     [ null
+    , false
     , undefined
     ]
     ,
@@ -23,7 +24,6 @@ describe('isnt', function() {
     , ''
     , {}
     , []
-    , false
     ]
     ,
     function(x) {

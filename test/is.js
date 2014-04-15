@@ -7,9 +7,9 @@ const expect = require('chai').expect
 
 describe('is', function() {
   describe('when given a single argument `x`', function() {
-    it('should return `true` whenever `x` has a value', function() {
+    it('should return `true` whenever `x` is logically true', function() {
       each(
-        [ true, false
+        [ true
         , -2, -1, 0, 1, 2
         , '', 'wibble'
         , [], [1, 2, 3]
@@ -22,8 +22,9 @@ describe('is', function() {
       )
     })
 
-    it('should return `false` whenever `x` is null or undefined', function() {
+    it('should return `false` whenever `x` is logically false', function() {
       expect(is(null)).to.be.false
+      expect(is(false)).to.be.false
       expect(is(undefined)).to.be.false
     })
   })
@@ -164,7 +165,7 @@ describe('is', function() {
     describe('and when `x = NaN`', function() {
       it('should return true', function() {
         expect(is(NaN, NaN)).to.be.true
-        expect(is('nan', NaN)).to.be.true
+        expect(is('NaN', NaN)).to.be.true
       })
     })
 
@@ -329,12 +330,19 @@ describe('is', function() {
   })
 
   describe('when testing for null', function() {
-    describe('and when `x = null`', function() {
-      it('should return true', function() {
-        expect(is(null, null)).to.be.true
-        expect(is('null', null)).to.be.true
-      })
-    })
+    each(
+      [ null
+      , undefined
+      ]
+      , function(x) {
+        describe('and when `x = '+src(x)+'`', function() {
+          it('should return true', function() {
+            expect(is(null, x)).to.be.true
+            expect(is('null', x)).to.be.true
+          })
+        })
+      }
+    )
 
     each(
       [ NaN
@@ -344,10 +352,8 @@ describe('is', function() {
       , true
       , false
       , function() {}
-      , undefined
       ]
-      ,
-      function(x) {
+      , function(x) {
         describe('and when `x = '+src(x)+'`', function() {
           it('should return false', function() {
             expect(is(null, x)).to.be.false
