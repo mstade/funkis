@@ -1,13 +1,12 @@
-const expect = require('chai').expect
-    , count  = require('../lib/count')
-    , seq    = require('../lib/seq')
+const partial = require('../lib/partial')
+    , expect  = require('chai').expect
+    , count   = require('../lib/count')
+    , seq     = require('../lib/seq')
 
 describe('count', function() {
   describe('when given an uncountable object', function() {
     it('should throw a TypeError', function() {
-      expect(function() {
-        count(false)
-      }).to.throw(TypeError)
+      expect(partial(count, false)).to.throw(TypeError)
     })
   })
 

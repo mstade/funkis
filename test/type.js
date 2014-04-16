@@ -13,6 +13,7 @@ describe('type', function() {
   , ['null', null]
   , ['undefined', void 0]
   , ['seq', seq([1, 2, 3])]
+  , ['nan', NaN]
   ].forEach(function(test) {
     describe('when called with ' + test[1], function() {
       it('should return \'' + test[0] + '\'', function() {
