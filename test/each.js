@@ -48,7 +48,7 @@ describe('each', function() {
 
   describe('when given `' + src(obj) + '`', function() {
     describe('and the function `fn`', function() {
-      const prop = [{foo: 1}, {bar: true}, {baz: 'wibble'}]
+      const prop = [['foo', 1], ['bar', true], ['baz', 'wibble']]
 
       var i = 0
 
