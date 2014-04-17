@@ -48,8 +48,8 @@ describe('seq', function() {
     [ [ [1, 2, 3, 4, 5]
       , [1, 2, 3, 4, 5] 
       ]
-    , [   { foo: 1,     bar: true,     baz: 'wibble' }
-      , [ { foo: 1 }, { bar: true }, { baz: 'wibble' } ]
+    , [  { foo : 1,    bar : true,    baz : 'wibble' }
+      , [['foo', 1], ['bar', true], ['baz', 'wibble']]
       ]
     , [  'H'+'e'+'l'+'l'+'o'
       , ['H','e','l','l','o']
