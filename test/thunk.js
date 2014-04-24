@@ -214,35 +214,18 @@ describe('thunk', function() {
   })
 
   describe('when given a non-function `val` as the first parameter', function() {
-    it('should return a zero arity thunk', function() {
-      const th = thunk(function() {})
-
-      expect(th).to.be.a('function')
-      expect(th.length).to.equal(0)
-      expect(th.name).to.equal('thunk')
-    })
-
-    describe('and when called', function() {
-      it('should return `val` and nothing else', function() {
-        each(
-          [ 0
-          , 1
-          , true
-          , false
-          , ''
-          , 'hello'
-          , []
-          , {}
-          , null
-          , undefined
-          ]
-          ,
-          function(val) {
-            const th = thunk(val)
-            expect(th()).to.equal(val)
-          }
-        )
-      })
+    it('should throw a TypeError', function() {
+      each(
+        [ 0, 1
+        , true, false
+        , '', 'hello'
+        , [], {}
+        , null, undefined
+        ]
+        , function(val) {
+          expect(thunk(thunk, val)).to.throw(TypeError)
+        }
+      )
     })
   })
 })
