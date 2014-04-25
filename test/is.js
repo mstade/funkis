@@ -29,6 +29,38 @@ describe('is', function() {
     })
   })
 
+  describe('when testing for booleans', function() {
+    each([ true, false ], function(x) {
+        describe('and when `x = '+x+'`', function() {
+          it('should return true', function() {
+            expect(is(Boolean, x)).to.be.true
+            expect(is('boolean', x)).to.be.true
+          })
+        })
+      }
+    )
+
+    each(
+      [ NaN
+      , '', 'wobble', 'true', 'false'
+      , {}
+      , []
+      , -1, 0, 1, 3.14
+      , function() {}
+      , undefined, null
+      ]
+      ,
+      function(x) {
+        describe('and when `x = '+src(x)+'`', function() {
+          it('should return false', function() {
+            expect(is(Boolean, x)).to.be.false
+            expect(is('boolean', x)).to.be.false
+          })
+        })
+      }
+    )
+  })
+
   describe('when testing for numbers', function() {
     each(
       [ 0
