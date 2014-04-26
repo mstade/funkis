@@ -43,38 +43,32 @@ describe("`defprop`", function() {
       })
 
       describe("when a field is a getter and/or setter, or the field is a function", function() {
-        it("should bind the field to a private scope", function() {
-          const target = defprop({},
-            { get prop()      { return this.wibble }
-            , set prop(x)     { this.wibble = x }
-            , get scope()     { return this }
-            , fun: function() { return this }
-            }
-          )
+        describe("and the `^bind` option is set to an object", function() {
+          it("should bind the field to the object", function() {
+            const scope = {}
+            const target = defprop({},
+              { get prop()      { return this.wibble }
+              , set prop(x)     { this.wibble = x }
+              , get scope()     { return this }
+              , fun: function() { return this }
+              }
+              , { "^bind" : scope }
+            )
 
-          const scope = target.scope
-          expect(scope).to.not.equal(target)
-          expect(target.isPrototypeOf(scope))
+            expect(target).to.not.equal(scope)
+            expect(target.scope).to.equal(scope)
 
-          expect(target.prop).to.equal(undefined)
-          expect(scope).to.not.have.property('wibble')
-          expect(target).to.not.have.property('wibble')
+            expect(target.prop).to.equal(undefined)
+            expect(scope).to.not.have.property('wibble')
+            expect(target).to.not.have.property('wibble')
 
-          target.prop = 'wobble'
-          expect(target.prop).to.equal('wobble')
-          expect(scope).to.have.property('wibble', 'wobble')
-          expect(target).to.not.have.property('wibble')
+            target.prop = 'wobble'
+            expect(target.prop).to.equal('wobble')
+            expect(scope).to.have.property('wibble', 'wobble')
+            expect(target).to.not.have.property('wibble')
 
-          expect(target.fun()).to.equal(scope)
-        })
-
-        it("should create a new private scope for each subsequent call", function() {
-          const target = {}
-
-          defprop(target, { get one() { return this }})
-          defprop(target, { get two() { return this }})
-
-          expect(target.one).to.not.equal(target.two)
+            expect(target.fun()).to.equal(scope)
+          })
         })
       })
 
