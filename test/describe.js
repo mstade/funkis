@@ -24,9 +24,9 @@ describe("`describe`", function() {
       const arrdesc = desc([0, 1, 2])
 
       expect(arrdesc).to.eql(
-        { '0': { value: 0, writable: true, enumerable: true, configurable: true }
-        , '1': { value: 1, writable: true, enumerable: true, configurable: true }
-        , '2': { value: 2, writable: true, enumerable: true, configurable: true }
+        { "0": { value: 0, writable: true, enumerable: true, configurable: true }
+        , "1": { value: 1, writable: true, enumerable: true, configurable: true }
+        , "2": { value: 2, writable: true, enumerable: true, configurable: true }
         , length:
           { value: 3
           , writable: true
@@ -42,10 +42,35 @@ describe("`describe`", function() {
         const arrdesc = desc([0, 1, 2], 1)
 
         expect(arrdesc).to.eql(
-          { value: 1
-          , writable: true
-          , enumerable: true
-          , configurable: true
+          { "1":
+            { value: 1
+            , writable: true
+            , enumerable: true
+            , configurable: true
+            }
+          }
+        )
+      })
+    })
+
+    describe("and when given multiple property names", function() {
+      it("should return a description of each given name", function() {
+        const arrdesc = desc([0, 1, 2], 0, 2)
+
+
+        expect(arrdesc).to.eql(
+          { "0":
+            { value: 0
+            , writable: true
+            , enumerable: true
+            , configurable: true
+            }
+          , "2":
+            { value: 2
+            , writable: true
+            , enumerable: true
+            , configurable: true
+            }
           }
         )
       })
@@ -58,13 +83,13 @@ describe("`describe`", function() {
 
       expect(mapdesc).to.eql(
         { foo:
-          { value: 'bar'
+          { value: "bar"
           , writable: true
           , enumerable: true
           , configurable: true
           }
         , wibble:
-          { value: 'wobble'
+          { value: "wobble"
           , writable: true
           , enumerable: true
           , configurable: true
@@ -78,10 +103,35 @@ describe("`describe`", function() {
         const mapdesc = desc({ foo: "bar", wibble: "wobble" }, "foo")
 
         expect(mapdesc).to.eql(
-          { value: 'bar'
-          , writable: true
-          , enumerable: true
-          , configurable: true
+          { "foo":
+            { value: "bar"
+            , writable: true
+            , enumerable: true
+            , configurable: true
+            }
+          }
+        )
+      })
+    })
+
+    describe("and when given multiple property names", function() {
+      it("should return a description of each given name", function() {
+        const arrdesc = desc({ foo: "bar", baz: "nope", wibble: "wobble" }, "foo", "wibble")
+
+
+        expect(arrdesc).to.eql(
+          { "foo":
+            { value: "bar"
+            , writable: true
+            , enumerable: true
+            , configurable: true
+            }
+          , "wibble":
+            { value: "wobble"
+            , writable: true
+            , enumerable: true
+            , configurable: true
+            }
           }
         )
       })
