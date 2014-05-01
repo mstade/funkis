@@ -32,7 +32,7 @@ describe('`variadic`', function() {
         })
       })
 
-      each(range(1, 26), function(n) {
+      each(range(1, 28), function(n) {
         describe('of arity '+n, function() {
           const sig = slice('abcdefghijklmnopqrstuvwxyz', 0, n - 1).concat('rest')
 
