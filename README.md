@@ -1,11 +1,10 @@
 ![Funkis](https://raw.githubusercontent.com/mstade/funkis/master/logo.png)
 
-funkis
-======
+This library aims to be a fully fledged environment for functional programming in JavaScript. It provides a number of functions common to functional programming, ranging from low-level constructs to high-level abstractions.
 
-Functional programming in JavaScript
+Funkis is work in progress, and APIs change quickly while the library is still being developed. Please don't use it for anything, or at least do so at your own risk. Beyond the [tests][1] there is no documentation available – good luck!
 
-Not much to see here yet.
+[1]: test
 
 Status
 ------
