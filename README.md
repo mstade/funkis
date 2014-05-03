@@ -1,7 +1,7 @@
+![Funkis](//raw.github.com/mstade/funkis/master/logo.svg)
+
 funkis
 ======
-
-![Funkis](logo.svg)
 
 Functional programming in JavaScript
 
