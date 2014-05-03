@@ -1,4 +1,4 @@
-![Funkis](//raw.githubusercontent.com/mstade/funkis/master/logo.png)
+![Funkis](https://raw.githubusercontent.com/mstade/funkis/master/logo.png)
 
 funkis
 ======
