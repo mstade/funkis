@@ -1,4 +1,4 @@
-![Funkis](//raw.github.com/mstade/funkis/master/logo.svg)
+![Funkis](//raw.github.com/mstade/funkis/master/logo.png)
 
 funkis
 ======
