@@ -1,6 +1,12 @@
-describe('apply', function() {
-  describe('when not given a function', function() {
-    it('should throw a TypeError', function() {
+const expect = require("chai").expect
+    , slice  = require("../lib/slice")
+    , apply  = require("../lib/apply")
+    , each   = require("../lib/each")
+    , $      = require("../lib/partial")
+
+describe("`apply`", function() {
+  describe("given a non-function", function() {
+    it("should throw a TypeError", function() {
       each(
         [ 0
         , 1
@@ -12,68 +18,77 @@ describe('apply', function() {
         , undefined
         ]
         , function(nonfn) {
-          expect(function() {
-            apply(nonfn)
-          }).to.throw(TypeError)
+          expect($(apply, nonfn)).to.throw(TypeError)
         }
       )
     })
   })
 
-  describe('when given a function `fn`', function() {
-    describe('and no arguments', function(done) {
-      it('should call the function without arguments', function(done) {      
-        const fn = function() {
-          expect(arguments.length).to.equal(0)
-          done()
-        }
+  describe("given a function `fn`", function() {
+    describe("and no arguments", function(done) {
+      describe("when called", function() {
+        it("should not pass any arguments", function(done) {
+          apply(fn)
 
-        apply(fn)
-      })
-
-      describe('and `fn` is bound', function() {
-        it('should not affect the binding', function(done) {
-          const owner = {}
-
-          const fn = function() {
+          function fn() {
             expect(arguments.length).to.equal(0)
-            expect(this).to.equal(owner)
             done()
           }
+        })
 
-          apply(fn.bind(owner))
+        it("should return the correct return value", function() {
+          expect(apply(fn)).to.equal("wibble")
+
+          function fn() {
+            expect(arguments.length).to.equal(0)
+            return "wibble"
+          }
+        })
+
+        it("should not affect the binding of `fn`", function() {
+          const that = { wibble: "wobble" }
+          expect(apply(fn.bind(that))).to.equal(that)
+
+          function fn() {
+            expect(arguments.length).to.equal(0)
+            expect(this).to.equal(that)
+            return this
+          }
         })
       })
     })
 
-    describe('and when given arguments', function(done) {
-      it('should call the function with arguments', function(done) {
-        const fn = function() {
-          expect(slice(arguments)).to.eql([1, true, 'wibble'])
-          done()
-        }
+    describe("and some arguments", function(done) {
+      describe("when called", function() {
+        it("should pass the arguments", function(done) {
+          apply(fn, [1, true, "wibble"])
 
-        apply(fn, [1, true, 'wibble'])
-      })
-
-      describe('and `fn` is bound', function() {
-        it('should not affect the binding', function(done) {
-          const owner = {}
-
-          const fn = function() {
-            expect(slice(arguments)).to.eql([1, true, 'wibble'])
-            expect(this).to.equal(owner)
+          function fn() {
+            expect(slice(arguments)).to.eql([1, true, "wibble"])
             done()
           }
+        })
 
-          apply(fn.bind(owner), [1, true, 'wibble'])
+        it("should return the correct return value", function() {
+          expect(apply(fn, [1, true, "wibble"])).to.equal("bob")
+
+          function fn() {
+            expect(slice(arguments)).to.eql([1, true, "wibble"])
+            return "bob"
+          }
+        })
+
+        it("should not affect the binding of `fn`", function() {
+          const that = { wibble: "wobble" }
+          expect(apply(fn.bind(that), [1, true, "wibble"])).to.equal("bob")
+
+          function fn() {
+            expect(this).to.equal(that)
+            expect(slice(arguments)).to.eql([1, true, "wibble"])
+            return "bob"
+          }
         })
       })
     })
   })
 })
-
-const expect = require('chai').expect
-    , slice  = require('../lib/slice')
-    , apply  = require('../lib/apply')
-    , each   = require('../lib/each')

@@ -1,60 +1,96 @@
 const variadic = require('../lib/variadic')
     , expect   = require('chai').expect
+    , thunk    = require('../lib/thunk')
+    , range    = require('../lib/range')
     , slice    = require('../lib/slice')
     , each     = require('../lib/each')
     , src      = require('../lib/src')
 
-describe('variadic', function() {
-  describe('when called with a non-function parameter', function() {
-    it('should throw a TypeError', function() {
-      each(
-        [ 1, 0
-        , '', 'hello'
-        , true, false
-        , null, undefined
-        ]
-        , function(test) {
-          expect(function() { variadic(test) }).to.throw(TypeError)
-        }
-      )
+describe('`variadic`', function() {
+  describe('given an argument `fn`', function() {
+    describe('when it is not a function', function() {
+      it('should throw a `TypeError`', function() {
+        each(
+          [ 1, 0
+          , '', 'hello'
+          , true, false
+          , null, undefined
+          ]
+          , function(fn) {
+
+            expect(function() { variadic(fn) }).to.throw(TypeError)
+          }
+        )
+      })
     })
-  })
 
-  var verify
+    describe('when it is a function', function() {
+      describe('of arity 0', function() {
+        it('should just return `fn`', function() {
+          const fn = function() {}
+          expect(variadic(fn)).to.equal(fn)
+        })
+      })
 
-  each(
-    [ [function(rest) { verify(arguments) }, [1, 2, 3], ['foo', false], [function() {}], []]
-    , [function foo(a, b, rest) { verify(arguments) }, [1, 2, 'hello', 'world!'], ['foo', 'bar', 'baz'], [1, 2]]
-    ]
-    ,
-    function(test) {
-      const fn = test[0]
+      each(range(1, 26), function(n) {
+        describe('of arity '+n, function() {
+          const sig = slice('abcdefghijklmnopqrstuvwxyz', 0, n - 1).concat('rest')
 
-      describe('when given `' + src(fn) + '`', function() {
-        const varfn = variadic(fn)
+          it('should return a '+n+' arity function', function() {
+            const fn = Function.apply(Function, sig.concat('return'))
 
-        each(test.slice(1), function(args) {
-          const argsrc = args.length? '`' + src(args).slice(1, -1) + '`' : 'nothing'
+            expect(fn).to.have.length(n)
+            expect(variadic(fn)).to.have.length(n)
+          })
 
-          describe('and when called with ' + argsrc, function() {
-            const expHead = slice(args, 0, fn.length - 1)
-                , expRest = slice(args, fn.length - 1)
+          describe('that when called with fewer than '+n+' arguments', function() {
+            it('should leave `rest` undefined', function() {
+              var args = slice(sig, 0, -1)
 
-            it('should set rest to `' + src(expRest) + '`', function(done) {
-              verify = function(actual) {
-                const head = slice(actual, 0, -1)
-                    , rest = actual[actual.length - 1]
+              while (args.length) {
+                var fn = Function.apply(Function, sig.concat(
+                  [ 'this.expect(arguments).to.have.length('+args.length+')'
+                  , 'this.expect(rest).to.be.undefined'
+                  ].join('\n')
+                ))
 
-                expect(head).to.eql(expHead)
-                expect(rest).to.eql(expRest)
-                done()
+                variadic(fn).apply({ expect: expect }, args)
+                args = slice(args, 0, -1)
               }
+            })
+          })
 
-              varfn.apply(null, args)
+          describe('but when called with '+n+' arguments', function() {
+            it('should put the last argument in `rest`', function() {
+              const args = slice(sig, 0, -1).concat('wibble')
+
+              const fn = Function.apply(Function, sig.concat(
+                [ 'this.expect(arguments).to.have.length('+n+')'
+                , 'this.expect(rest).to.have.length(1)'
+                , 'this.expect(rest).to.contain("wibble")'
+                ].join('\n')
+              ))
+
+              variadic(fn).apply({ expect: expect }, args)
+            })
+          })
+
+          describe('and when called with more than '+n+' arguments', function() {
+            it('should put all variadic arguments in `rest`', function() {
+              const args = slice(sig, 0, -1).concat('wibble', 'wobble', 'bob')
+
+              const fn = Function.apply(Function, sig.concat(
+                [ 'this.expect(arguments).to.have.length('+n+')'
+                , 'this.expect(rest).to.have.length(3)'
+                , 'this.expect(rest).to.eql(["wibble", "wobble", "bob"])'
+                ].join('\n')
+              ))
+
+              variadic(fn).apply({ expect: expect }, args)
             })
           })
         })
       })
-    }
-  )
+    })
+  })
 })
