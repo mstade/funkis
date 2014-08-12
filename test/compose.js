@@ -1,8 +1,8 @@
 const partial = require('../lib/partial')
     , expect  = require('chai').expect
-    , comp    = require('../lib/comp')
+    , comp    = require('../lib/compose')
 
-describe('comp', function() {
+describe('compose', function() {
   describe('when given the two functions `a` and `b`', function() {
     const a = function(x) { return x * 2 }
         , b = function(x) { return x + 2 }
