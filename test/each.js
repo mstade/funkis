@@ -29,11 +29,11 @@ describe('each', function() {
         describe('and the function `fn`', function() {
           var i = 0
 
-	  var fn = function(x) {
+          var fn = function(x) {
             expect(x).to.equal(test[i++])
           }
 
-	  var times = test.length + ' time' + (test.length > 1? 's' : '')
+          var times = test.length + ' time' + (test.length > 1? 's' : '')
 
           it('should call `fn` ' + times +'; once for each item', function() {
             each(test, fn)

@@ -21,6 +21,7 @@ module.exports =
   , nth        : require('./lib/nth')
   , once       : require('./lib/once')
   , partial    : require('./lib/partial')
+  , pipe       : require('./lib/pipe')
   , range      : require('./lib/range')
   , repeatedly : require('./lib/repeatedly')
   , seq        : require('./lib/seq')
