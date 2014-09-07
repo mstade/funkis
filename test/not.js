@@ -1,7 +1,7 @@
-const expect = require('chai').expect
-    , each   = require('../lib/each')
-    , src    = require('../lib/src')
-    , not    = require('../lib/not')
+var expect = require('chai').expect
+  , each   = require('../lib/each')
+  , src    = require('../lib/src')
+  , not    = require('../lib/not')
 
 describe('not', function() {
   each(

@@ -1,17 +1,17 @@
-const expect = require('chai').expect
-    , each   = require('../lib/each')
-    , src    = require('../lib/src')
-    , seq    = require('../lib/seq')
+var expect = require('chai').expect
+  , each   = require('../lib/each')
+  , src    = require('../lib/src')
+  , seq    = require('../lib/seq')
 
 describe('each', function() {
   describe('when given a seq', function() {
     it('should call `fn` once for each item', function() {
-      const l = [1, 2, 3]
+      var l = [1, 2, 3]
           , s = seq(l)
 
       var i = 0
 
-      const fn = function(x) {
+      var fn = function(x) {
         expect(x).to.equal(l[i++])
       }
 
@@ -29,11 +29,11 @@ describe('each', function() {
         describe('and the function `fn`', function() {
           var i = 0
 
-          const fn = function(x) {
+	  var fn = function(x) {
             expect(x).to.equal(test[i++])
           }
 
-          const times = test.length + ' time' + (test.length > 1? 's' : '')
+	  var times = test.length + ' time' + (test.length > 1? 's' : '')
 
           it('should call `fn` ' + times +'; once for each item', function() {
             each(test, fn)
@@ -44,15 +44,15 @@ describe('each', function() {
     }
   )
 
-  const obj = { foo: 1, bar: true, baz: 'wibble' }
+  var obj = { foo: 1, bar: true, baz: 'wibble' }
 
   describe('when given `' + src(obj) + '`', function() {
     describe('and the function `fn`', function() {
-      const prop = [['foo', 1], ['bar', true], ['baz', 'wibble']]
+      var prop = [['foo', 1], ['bar', true], ['baz', 'wibble']]
 
       var i = 0
 
-      const fn = function(x) {
+      var fn = function(x) {
         expect(x).to.eql(prop[i++])
       }
 
@@ -65,7 +65,7 @@ describe('each', function() {
 
   describe('when given an empty sequence', function() {
     it('should do nothing', function() {
-      const fn = function(x) { throw new Error("shouldn't get here!") }
+      var fn = function(x) { throw new Error("shouldn't get here!") }
       each(null, fn)
     })
   })

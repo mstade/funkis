@@ -1,13 +1,13 @@
-const repeatedly = require('../lib/repeatedly')
-    , partial    = require('../lib/partial')
-    , expect     = require('chai').expect
-    , range      = require('../lib/range')
-    , each       = require('../lib/each')
-    , nth        = require('../lib/nth')
+var repeatedly = require('../lib/repeatedly')
+  , partial    = require('../lib/partial')
+  , expect     = require('chai').expect
+  , range      = require('../lib/range')
+  , each       = require('../lib/each')
+  , nth        = require('../lib/nth')
 
 describe('repeatedly', function() {
   describe('when called with a limit `5` and a function `fn`', function() {
-    const calls = repeatedly(5, function(n) { return n })
+    var calls = repeatedly(5, function(n) { return n })
 
     it('should return a lazy sequence of `5` calls to `fn`', function() {
       expect(calls.length).to.equal(5)

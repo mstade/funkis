@@ -1,7 +1,7 @@
-const expect = require('chai').expect
-    , range  = require('../lib/range')
-    , type   = require('../lib/type')
-    , seq    = require('../lib/seq')
+var expect = require('chai').expect
+  , range  = require('../lib/range')
+  , type   = require('../lib/type')
+  , seq    = require('../lib/seq')
 
 describe('type', function() {
   [ ['string', 'hello']

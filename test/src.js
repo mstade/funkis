@@ -1,6 +1,6 @@
-const expect = require('chai').expect
-    , each   = require('../lib/each')
-    , src    = require('../lib/src')
+var expect = require('chai').expect
+  , each   = require('../lib/each')
+  , src    = require('../lib/src')
 
 describe('src', function() {
   each(

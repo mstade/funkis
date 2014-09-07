@@ -1,9 +1,9 @@
-const expect = require('chai').expect
-    , range  = require('../lib/range')
-    , each   = require('../lib/each')
-    , seq    = require('../lib/seq')
-    , src    = require('../lib/src')
-    , is     = require('../lib/is')
+var expect = require('chai').expect
+  , range  = require('../lib/range')
+  , each   = require('../lib/each')
+  , seq    = require('../lib/seq')
+  , src    = require('../lib/src')
+  , is     = require('../lib/is')
 
 describe('is', function() {
   describe('when given a single argument `x`', function() {
@@ -45,7 +45,7 @@ describe('is', function() {
       ]
       ,
       function(x) {
-        const n = is(Array, x)? x[1] : src(x)
+	var n = is(Array, x)? x[1] : src(x)
 
         is(Array, x) && (x = x[0])
 
@@ -202,7 +202,7 @@ describe('is', function() {
       ]
       ,
       function(x) {
-        const n = is(Array, x)? x[1] : src(x)
+	var n = is(Array, x)? x[1] : src(x)
 
         is(Array, x) && (x = x[0])
 
@@ -234,7 +234,7 @@ describe('is', function() {
       ]
       ,
       function(x) {
-        const n = is(Array, x)? x[1] : src(x)
+	var n = is(Array, x)? x[1] : src(x)
 
         is(Array, x) && (x = x[0])
 
@@ -263,7 +263,7 @@ describe('is', function() {
       ]
       ,
       function(x) {
-        const n = is(Array, x)? x[1] : src(x)
+	var n = is(Array, x)? x[1] : src(x)
 
         is(Array, x) && (x = x[0])
 

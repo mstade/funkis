@@ -1,7 +1,7 @@
 ;(function() {
-  const global = this
-      , libdir = __dirname + '/lib'
-      , fs     = require('fs')
+  var global = this
+    , libdir = __dirname + '/lib'
+    , fs     = require('fs')
 
   global['reload'] = function() {
     Object.keys(require.cache)

@@ -1,7 +1,7 @@
-const constantly = require('../lib/constantly')
-    , expect     = require('chai').expect
-    , each       = require('../lib/each')
-    , src        = require('../lib/src')
+var constantly = require('../lib/constantly')
+  , expect     = require('chai').expect
+  , each       = require('../lib/each')
+  , src        = require('../lib/src')
 
 describe('constantly', function() {
   each(
@@ -14,7 +14,7 @@ describe('constantly', function() {
     ]
     , function(val) {
       describe('when called with the value `' + src(val) + '`', function() {
-        const v = constantly(val)
+	var v = constantly(val)
 
         it('should return a function called `constant`', function() {
           expect(v.name).to.equal('constant')

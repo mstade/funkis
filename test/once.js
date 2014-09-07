@@ -1,9 +1,9 @@
-const expect = require('chai').expect
-    , once   = require('../lib/once')
+var expect = require('chai').expect
+  , once   = require('../lib/once')
 
 describe('once', function() {
   describe('when given a function `fn`', function() {
-    const ofn = once(fn)
+    var ofn = once(fn)
 
     it('should return another function named `once`', function() {
       expect(ofn).to.be.a('function')

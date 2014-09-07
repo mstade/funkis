@@ -23,7 +23,7 @@ describe('call', function() {
   describe('when given a function `fn`', function() {
     describe('and no arguments', function(done) {
       it('should call the function without arguments', function(done) {      
-        const fn = function() {
+	var fn = function() {
           expect(arguments.length).to.equal(0)
           done()
         }
@@ -33,9 +33,9 @@ describe('call', function() {
 
       describe('and `fn` is bound', function() {
         it('should not affect the binding', function(done) {
-          const owner = {}
+	  var owner = {}
 
-          const fn = function() {
+	  var fn = function() {
             expect(arguments.length).to.equal(0)
             expect(this).to.equal(owner)
             done()
@@ -48,7 +48,7 @@ describe('call', function() {
 
     describe('and when given arguments', function(done) {
       it('should call the function with arguments', function(done) {
-        const fn = function() {
+	var fn = function() {
           expect(slice(arguments)).to.eql([1, true, 'wibble'])
           done()
         }
@@ -58,9 +58,9 @@ describe('call', function() {
 
       describe('and `fn` is bound', function() {
         it('should not affect the binding', function(done) {
-          const owner = {}
+	  var owner = {}
 
-          const fn = function() {
+	  var fn = function() {
             expect(slice(arguments)).to.eql([1, true, 'wibble'])
             expect(this).to.equal(owner)
             done()
@@ -73,7 +73,7 @@ describe('call', function() {
   })
 })
 
-const expect = require('chai').expect
-    , slice  = require('../lib/slice')
-    , each   = require('../lib/each')
-    , call   = require('../lib/call')
+var expect = require('chai').expect
+  , slice  = require('../lib/slice')
+  , each   = require('../lib/each')
+  , call   = require('../lib/call')

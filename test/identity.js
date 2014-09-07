@@ -1,8 +1,8 @@
-const identity = require('../lib/identity')
-    , expect   = require('chai').expect
-    , each     = require('../lib/each')
-    , type     = require('../lib/type')
-    , PI       = Math.PI
+var identity = require('../lib/identity')
+  , expect   = require('chai').expect
+  , each     = require('../lib/each')
+  , type     = require('../lib/type')
+  , PI       = Math.PI
 
 describe('identity', function() {
   each(
@@ -17,11 +17,11 @@ describe('identity', function() {
   , 'hello'
   ]
   , function(x) {
-    const str = (type(x) === 'array' || type(x) === 'object')? JSON.stringify(x) : x + ''
+    var str = (type(x) === 'array' || type(x) === 'object')? JSON.stringify(x) : x + ''
 
     describe('when given `' + str + '`', function() {
       it('should return `' + str + '`', function() {
-        const id = identity(x)
+	var id = identity(x)
 
         if (x !== x) { // NaN *sigh*
           expect(id).to.not.equal(id)

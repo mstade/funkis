@@ -1,6 +1,6 @@
-const partial = require('../lib/partial')
-    , expect  = require('chai').expect
-    , nth     = require('../lib/nth')
+var partial = require('../lib/partial')
+  , expect  = require('chai').expect
+  , nth     = require('../lib/nth')
 
 describe('nth', function() {
   describe('when given a seqable object and an index', function() {

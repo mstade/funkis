@@ -1,7 +1,7 @@
 describe('range', function() {
   describe('when not given any arguments', function() {
     it('should return a lazy sequence of all natural numbers', function() {
-      const r = range()
+      var r = range()
 
       expect(r.length).to.equal(Infinity)
       expect(vec(take(5, r))).to.eql([0, 1, 2, 3, 4])
@@ -10,7 +10,7 @@ describe('range', function() {
 
   describe('when given one argument: `end`', function() {
     it('should return a lazy sequence of numbers from 0 to `end` (exclusive)', function() {
-      const r = range(5)
+      var r = range(5)
 
       expect(r.length).to.equal(5)
       expect(vec(r)).to.eql([0, 1, 2, 3, 4])
@@ -19,7 +19,7 @@ describe('range', function() {
 
   describe('when given two arguments: `start` and `end`', function() {
     it('should return a lazy sequence of numbers from `start` (inclusive) to `end` (exclusive)', function() {
-      const r = range(-5, 0)
+      var r = range(-5, 0)
 
       expect(r.length).to.equal(5)
       expect(vec(r)).to.eql([-5, -4, -3, -2, -1])
@@ -28,7 +28,7 @@ describe('range', function() {
 
   describe('when given three arguments: `start`, `end`, and `step`', function() {
     it('should return use `step` as the increment', function() {
-      const r = range(0, 5, 0.5)
+      var r = range(0, 5, 0.5)
 
       expect(r.length).to.equal(10)
       expect(vec(r)).to.eql([0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5])
@@ -64,8 +64,8 @@ describe('range', function() {
   })
 })
 
-const expect = require('chai').expect
-    , range  = require('../lib/range')
-    , each   = require('../lib/each')
-    , take   = require('../lib/take')
-    , vec    = require('../lib/vec')
+var expect = require('chai').expect
+  , range  = require('../lib/range')
+  , each   = require('../lib/each')
+  , take   = require('../lib/take')
+  , vec    = require('../lib/vec')

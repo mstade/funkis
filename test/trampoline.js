@@ -1,7 +1,7 @@
-const trampoline = require('../lib/trampoline')
-    , expect     = require('chai').expect
-    , thunk      = require('../lib/thunk')
-    , each       = require('../lib/each')
+var trampoline = require('../lib/trampoline')
+  , expect     = require('chai').expect
+  , thunk      = require('../lib/thunk')
+  , each       = require('../lib/each')
 
 describe('trampoline', function() {
   describe('when given a non-function `fn` parameter', function() {
@@ -22,7 +22,7 @@ describe('trampoline', function() {
 
   describe('when given a factorial function', function() {
     it('should trampoline it!', function() {
-      const facts = []
+      var facts = []
       
       each([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], function(n) {
         facts.push(factorial(n))

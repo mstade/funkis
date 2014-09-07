@@ -1,6 +1,6 @@
-const expect = require('chai').expect
-    , slice  = require('../lib/slice')
-    , each   = require('../lib/each')
+var expect = require('chai').expect
+  , slice  = require('../lib/slice')
+  , each   = require('../lib/each')
 
 describe('slice', function() {
   describe('given a falsy value', function() {
@@ -12,11 +12,11 @@ describe('slice', function() {
   })
 
   describe('given the array [1,2,3,4,5]', function() {
-    const arr = [1, 2, 3, 4, 5]
+    var arr = [1, 2, 3, 4, 5]
 
     describe('and no other arguments', function() {
       it('should return an exact copy', function() {
-        const copy = slice(arr)
+	var copy = slice(arr)
 
         expect(copy).to.not.equal(arr)
         expect(copy).to.eql([1, 2, 3, 4, 5])

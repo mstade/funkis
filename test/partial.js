@@ -1,11 +1,11 @@
-const expect = require("chai").expect
-    , $      = require("../lib/partial") 
+var expect = require("chai").expect
+  , $      = require("../lib/partial") 
 
 describe("`partial`", function() {
   describe("given a function", function() {
     describe("and no other parameters", function() {
       it("should just return the given function", function() {
-        const fun = $(test)
+        var fun = $(test)
         expect(fun).to.equal(test)
         function test(a, b) {}
       })
@@ -16,7 +16,7 @@ describe("`partial`", function() {
     it("should return a left-to-right partially applied function", function() {
       expect(test(2, 5)).to.equal(7)
       
-      const fun = $(test, 2)
+      var fun = $(test, 2)
 
       expect(fun(5)).to.equal(7)
 
@@ -30,11 +30,11 @@ describe("`partial`", function() {
     describe("when a parameter is identical to the `partial` function", function() {
       describe("and when the partially applied function is called", function() {
         it("should replace the `partial` parameter with the first argument passed", function() {
-          const π = Math.PI
+          var π = Math.PI
 
           expect(test(1, "wibble", 3)).to.equal(π)
 
-          const fun = $(test, 1, $, 3)
+          var fun = $(test, 1, $, 3)
 
           expect(fun("wibble")).to.equal(π)
 
@@ -53,7 +53,7 @@ describe("`partial`", function() {
         it("should replace the `partial` parameters in a left-to-right fashion", function() {
           expect(test(9, "7", false, null)).to.equal("wibble")
 
-          const fun = $(test, $, "7", $, null)
+          var fun = $(test, $, "7", $, null)
 
           expect(fun(9, false)).to.equal("wibble")
 

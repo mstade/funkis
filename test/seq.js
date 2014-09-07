@@ -1,10 +1,10 @@
-const expect = require('chai').expect
-    , count  = require('../lib/count')
-    , each   = require('../lib/each')
-    , take   = require('../lib/take')
-    , type   = require('../lib/type')
-    , seq    = require('../lib/seq')
-    , src    = require('../lib/src')
+var expect = require('chai').expect
+  , count  = require('../lib/count')
+  , each   = require('../lib/each')
+  , take   = require('../lib/take')
+  , type   = require('../lib/type')
+  , seq    = require('../lib/seq')
+  , src    = require('../lib/src')
 
 describe('seq', function() {
   describe('when given an empty sequence or null value', function() {
@@ -32,7 +32,7 @@ describe('seq', function() {
         , [undefined]
         ]
         , function(arr) {
-          const s = seq(arr)
+	  var s = seq(arr)
 
           var i = 0
 
@@ -85,7 +85,7 @@ describe('seq', function() {
 
   describe('when given a string with unicode shenanigans', function() {
     it('should make a sequence of characters where code pairs are considered', function() {
-      const chr = ['I', 'ñ', 't', 'ë', 'r', 'n', 'â', 't', 'i', 'ô', 'n', 'à', 'l', 'i', 'z', 'æ', 't', 'i', 'ø', 'n', '☃', '💩']
+      var chr = ['I', 'ñ', 't', 'ë', 'r', 'n', 'â', 't', 'i', 'ô', 'n', 'à', 'l', 'i', 'z', 'æ', 't', 'i', 'ø', 'n', '☃', '💩']
           , str = seq(chr.join(''))
 
       expect(str.length).to.eql(chr.length)
@@ -102,7 +102,7 @@ describe('seq', function() {
 
   describe('when rest is called', function() {
     it('should return the same instance every time', function() {
-      const s = seq([1, 2, 3])
+      var s = seq([1, 2, 3])
 
       expect(s.rest).to.equal(s.rest)
       expect(seq.isPrototypeOf(s.rest)).to.be.true
@@ -111,7 +111,7 @@ describe('seq', function() {
 
   describe('when called with a next function' , function() {
     it('should behave as a lazy sequence', function() {
-      const s = seq(Math.random)
+      var s = seq(Math.random)
 
       each(take(5, s), function(n) {
         expect(n).to.be.within(0, 1)
@@ -121,7 +121,7 @@ describe('seq', function() {
 
   describe('when called with a next function and valid length `n`', function() {
     it('should automatically end the lazy sequence after `n` iterations', function() {
-      const s = seq(Math.random, 3)
+      var s = seq(Math.random, 3)
 
       expect(s.length).to.equal(3)
       expect(s.rest.length).to.equal(2)
@@ -131,7 +131,7 @@ describe('seq', function() {
   })
 
   describe('when called with a next function that immediately returns `seq.done`', function() {
-    const empty = seq(function() { return seq.done })
+    var empty = seq(function() { return seq.done })
 
     it('should have a zero length', function() {
       expect(empty.length).to.equal(0)
@@ -153,7 +153,7 @@ describe('seq', function() {
   })
 
   describe('when next is called', function() {
-    const s = seq([1, 2])
+    var s = seq([1, 2])
 
     it('should behave as the ES6 iterator protocol', function() {
       each(

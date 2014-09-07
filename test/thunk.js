@@ -1,14 +1,14 @@
-const expect = require('chai').expect
-    , global = (function() { return this }())
-    , thunk  = require('../lib/thunk')
-    , each   = require('../lib/each')
-    , src    = require('../lib/src')
+var expect = require('chai').expect
+  , global = (function() { return this }())
+  , thunk  = require('../lib/thunk')
+  , each   = require('../lib/each')
+  , src    = require('../lib/src')
 
 describe('thunk', function() {
   describe('when given a function `fn`', function() {
     describe('and no parameters', function() {
       it('should return a zero arity thunk', function() {
-        const th = thunk(function() {})
+	var th = thunk(function() {})
 
         expect(th).to.be.a('function')
         expect(th.length).to.equal(0)
@@ -17,7 +17,7 @@ describe('thunk', function() {
 
       describe('when called', function() {
         it('should call `fn` with no parameters', function(done) {
-          const th = thunk(function() {
+	  var th = thunk(function() {
             expect(arguments.length).to.equal(0)
             done()
           })
@@ -26,7 +26,7 @@ describe('thunk', function() {
         })
 
         it('should ignore any parameters given to it', function (done) {
-          const th = thunk(function() {
+	  var th = thunk(function() {
             expect(arguments.length).to.equal(0)
             done()
           })
@@ -35,7 +35,7 @@ describe('thunk', function() {
         })
 
         it('should return whatever `fn` returns', function() {
-          const th = thunk(function() { return 'hello' })
+	  var th = thunk(function() { return 'hello' })
           expect(th()).to.equal('hello')
         })
       })
@@ -45,7 +45,7 @@ describe('thunk', function() {
       , function(param) {
         describe('and a single parameter `' + src(param) + '`', function() {
           it('should return a zero arity thunk', function() {
-            const th = thunk(function() {})
+	    var th = thunk(function() {})
 
             expect(th).to.be.a('function')
             expect(th.length).to.equal(0)
@@ -53,7 +53,7 @@ describe('thunk', function() {
 
           describe('when called', function() {
             it('should call `fn` with `' + src(param) + '` as the sole parameter', function(done) {
-              const th = thunk(function(a) {
+	      var th = thunk(function(a) {
                 expect(arguments.length).to.equal(1)
                 expect(a).to.equal(param)
                 done()
@@ -63,7 +63,7 @@ describe('thunk', function() {
             })
 
             it('should ignore any parameters given to it', function (done) {
-              const th = thunk(function(a) {
+	      var th = thunk(function(a) {
                 expect(arguments.length).to.equal(1)
                 expect(a).to.equal(param)
                 done()
@@ -73,7 +73,7 @@ describe('thunk', function() {
             })
 
             it('should return whatever `fn` returns', function() {
-              const th = thunk(function(a) { return a }, 'hello')
+	      var th = thunk(function(a) { return a }, 'hello')
               expect(th()).to.equal('hello')
             })
           })
@@ -83,7 +83,7 @@ describe('thunk', function() {
 
     describe('and more than one parameter', function() {
       it('should return a zero arity function', function() {
-        const th = thunk(function() {}, 1, 2, 3)
+	var th = thunk(function() {}, 1, 2, 3)
         expect(th).to.be.a('function')
         expect(th.length).to.equal(0)
         expect(th.name).to.equal('thunk')
@@ -91,7 +91,7 @@ describe('thunk', function() {
 
       describe('and when called', function() {
         it('should call the given function, with the given parameters', function(done) {
-          const th = thunk(function(a, b, c) {
+	  var th = thunk(function(a, b, c) {
             expect(arguments.length).to.equal(3)
             expect(a).to.equal(1)
             expect(b).to.equal(false)
@@ -103,7 +103,7 @@ describe('thunk', function() {
         })
 
         it('should ignore any parameters given to it', function (done) {
-          const th = thunk(function(a, b, c) {
+	  var th = thunk(function(a, b, c) {
             expect(arguments.length).to.equal(3)
             expect(a).to.equal(1)
             expect(b).to.equal(false)
@@ -115,7 +115,7 @@ describe('thunk', function() {
         })
 
         it('should return whatever `fn` returns', function() {
-          const th = thunk(function(a, b) { return a + ' ' + b }, 'hello', 'world')
+	  var th = thunk(function(a, b) { return a + ' ' + b }, 'hello', 'world')
           expect(th()).to.equal('hello world')
         })
       })
@@ -126,12 +126,12 @@ describe('thunk', function() {
   describe('when given an unbound function `fn`', function() {
     describe('and when called', function() {
       it('should bind `this` of `fn` to the global object', function(done) {
-        const noargs = thunk(function() {
+	var noargs = thunk(function() {
           expect(this).to.equal(global)
           args()
         })
 
-        const args = thunk(function(a, b, c) {
+	var args = thunk(function(a, b, c) {
           expect(this).to.equal(global)
           expect(a).to.equal(1)
           expect(b).to.equal(2)
@@ -147,14 +147,14 @@ describe('thunk', function() {
   describe('when given a bound function `fn`', function() {
     describe('and when called', function() {
       it('should not affect the `this` of `fn`', function(done) {
-        const that = {}
+	var that = {}
 
-        const noargs = thunk(function() {
+	var noargs = thunk(function() {
           expect(this).to.equal(that)
           args()
         }.bind(that))
 
-        const args = thunk(function(a, b, c) {
+	var args = thunk(function(a, b, c) {
           expect(this).to.equal(that)
           expect(a).to.equal(1)
           expect(b).to.equal(2)
@@ -171,14 +171,14 @@ describe('thunk', function() {
     describe('and given an unbound function `fn`', function() {
       describe('and when called', function() {
         it('should bind `this` of `fn` to the thunk\'s `this`', function(done) {
-          const that = {}
+	  var that = {}
 
-          const noargs = thunk(function() {
+	  var noargs = thunk(function() {
             expect(this).to.equal(that)
             args()
           }).bind(that)
 
-          const args = thunk(function(a, b, c) {
+	  var args = thunk(function(a, b, c) {
             expect(this).to.equal(that)
             expect(a).to.equal(1)
             expect(b).to.equal(2)
@@ -193,14 +193,14 @@ describe('thunk', function() {
 
     describe('and given a bound function `fn`', function() {
       it('should not affect the `this` of `fn`', function(done) {        
-        const that = {}
+	var that = {}
 
-        const noargs = thunk(function() {
+	var noargs = thunk(function() {
           expect(this).to.not.equal(that)
           args()
         }.bind({})).bind(that)
 
-        const args = thunk(function(a, b, c) {
+	var args = thunk(function(a, b, c) {
           expect(this).to.not.equal(that)
           expect(a).to.equal(1)
           expect(b).to.equal(2)
@@ -215,7 +215,7 @@ describe('thunk', function() {
 
   describe('when given a non-function `val` as the first parameter', function() {
     it('should return a zero arity thunk', function() {
-      const th = thunk(function() {})
+      var th = thunk(function() {})
 
       expect(th).to.be.a('function')
       expect(th.length).to.equal(0)
@@ -238,7 +238,7 @@ describe('thunk', function() {
           ]
           ,
           function(val) {
-            const th = thunk(val)
+	    var th = thunk(val)
             expect(th()).to.equal(val)
           }
         )

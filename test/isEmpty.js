@@ -1,8 +1,8 @@
-const isEmpty = require('../lib/isEmpty')
-    , expect  = require('chai').expect
-    , each    = require('../lib/each')
-    , seq     = require('../lib/seq')
-    , src     = require('../lib/src')
+var isEmpty = require('../lib/isEmpty')
+  , expect  = require('chai').expect
+  , each    = require('../lib/each')
+  , seq     = require('../lib/seq')
+  , src     = require('../lib/src')
 
 describe('isEmpty', function() {
   each(

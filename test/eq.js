@@ -1,6 +1,6 @@
-const expect = require('chai').expect
-    , each   = require('../lib/each')
-    , eq     = require('../lib/eq')
+var expect = require('chai').expect
+  , each   = require('../lib/each')
+  , eq     = require('../lib/eq')
 
 describe('eq', function() {
   describe('given two numbers', function() {
