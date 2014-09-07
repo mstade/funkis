@@ -1,5 +1,6 @@
 module.exports =
   { apply      : require('./lib/apply')
+  , assert     : require('./lib/assert')
   , call       : require('./lib/call')
   , compose    : require('./lib/compose')
   , constantly : require('./lib/constantly')
@@ -29,6 +30,7 @@ module.exports =
   , thunk      : require('./lib/thunk')
   , trampoline : require('./lib/trampoline')
   , type       : require('./lib/type')
+  , val        : require('./lib/val')
   , variadic   : require('./lib/variadic')
   , vec        : require('./lib/vec')
   }

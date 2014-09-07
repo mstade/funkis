@@ -31,6 +31,10 @@ describe('apply', function() {
         apply(fn)
       })
 
+      it('should proxy the functions return value', function() {
+	expect(apply(constantly(3))).to.equal(3)
+      })
+
       describe('and `fn` is bound', function() {
         it('should not affect the binding', function(done) {
           const owner = {}
@@ -56,6 +60,10 @@ describe('apply', function() {
         apply(fn, [1, true, 'wibble'])
       })
 
+      it('should proxy the functions return value', function() {
+	expect(apply(constantly, [3])).to.be.a('function')
+      })
+
       describe('and `fn` is bound', function() {
         it('should not affect the binding', function(done) {
           const owner = {}
@@ -73,7 +81,8 @@ describe('apply', function() {
   })
 })
 
-const expect = require('chai').expect
-    , slice  = require('../lib/slice')
-    , apply  = require('../lib/apply')
-    , each   = require('../lib/each')
+const constantly = require('../lib/constantly')
+    , expect     = require('chai').expect
+    , slice      = require('../lib/slice')
+    , apply      = require('../lib/apply')
+    , each       = require('../lib/each')
