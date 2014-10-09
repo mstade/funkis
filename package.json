@@ -4,8 +4,7 @@
   "description": "Functional programming in JavaScript.",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul test _mocha --report html -- -R spec",
-    "foo": "export"
+    "test": "istanbul test ./node_modules/mocha/bin/_mocha --report html -- -R spec"
   },
   "author": "Marcus Stade",
   "license": "MIT",
