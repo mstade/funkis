@@ -1,8 +1,8 @@
-var fs     = require('fs')
-  , path   = require('path')
-  , each   = require('../lib/each')
-  , funkis = require('../')
+var funkis = require('../')
   , expect = require('must')
+  , each   = require('../lib/each')
+  , path   = require('path')
+  , fs     = require('fs')
 
 describe('funkis', function() {
   it('should export every function in lib/', function() {
