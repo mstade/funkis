@@ -9,5 +9,5 @@ Funkis is work in progress, and APIs change quickly while the library is still b
 Status
 ------
 
-[![Build Status](https://travis-ci.org/mstade/funkis.png?branch=master)](https://travis-ci.org/mstade/funkis)
-[![Coverage Status](https://coveralls.io/repos/mstade/funkis/badge.png?branch=master)](https://coveralls.io/r/mstade/funkis?branch=master)
+[![Build Status](http://img.shields.io/travis/mstade/funkis.svg?style=flat-square)](https://travis-ci.org/mstade/funkis)
+[![Coverage Status](http://img.shields.io/coveralls/mstade/funkis.svg?style=flat-square)](https://coveralls.io/r/mstade/funkis?branch=master)
