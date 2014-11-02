@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/mstade/funkis/issues"
   },
-  "homepage": "https://github.com/mstade/funkis"
+  "homepage": "https://github.com/mstade/funkis",
+  "dependencies": {
+    "expect.js": "^0.3.1"
+  }
 }
