@@ -16,6 +16,7 @@ module.exports =
   , log        : require('./lib/log')
   , lowerCase  : require('./lib/lowerCase')
   , lt         : require('./lib/lt')
+  , merge      : require('./lib/merge')
   , min        : require('./lib/min')
   , not        : require('./lib/not')
   , nth        : require('./lib/nth')
