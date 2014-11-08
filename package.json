@@ -14,7 +14,7 @@
     "istanbul": "~0.2.4",
     "mocha": "~1.17.1",
     "mocha-lcov-reporter": "0.0.1",
-    "must": "^0.12.0"
+    "must": "git://github.com/mstade/js-must"
   },
   "repository": {
     "type": "git",
