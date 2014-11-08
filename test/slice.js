@@ -1,4 +1,4 @@
-var expect = require('chai').expect
+var expect = require('must')
   , slice  = require('../lib/slice')
   , each   = require('../lib/each')
 

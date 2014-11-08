@@ -1,5 +1,5 @@
 var identity = require('../lib/identity')
-  , expect   = require('chai').expect
+  , expect   = require('must')
   , each     = require('../lib/each')
   , type     = require('../lib/type')
   , PI       = Math.PI

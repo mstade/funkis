@@ -1,4 +1,4 @@
-var expect = require('chai').expect
+var expect = require('must')
   , global = (function() { return this }())
   , thunk  = require('../lib/thunk')
   , each   = require('../lib/each')
@@ -10,7 +10,7 @@ describe('thunk', function() {
       it('should return a zero arity thunk', function() {
 	var th = thunk(function() {})
 
-        expect(th).to.be.a('function')
+        expect(th).to.be.a(Function)
         expect(th.length).to.equal(0)
         expect(th.name).to.equal('thunk')
       })
@@ -47,7 +47,7 @@ describe('thunk', function() {
           it('should return a zero arity thunk', function() {
 	    var th = thunk(function() {})
 
-            expect(th).to.be.a('function')
+            expect(th).to.be.a(Function)
             expect(th.length).to.equal(0)
           })
 
@@ -84,7 +84,7 @@ describe('thunk', function() {
     describe('and more than one parameter', function() {
       it('should return a zero arity function', function() {
 	var th = thunk(function() {}, 1, 2, 3)
-        expect(th).to.be.a('function')
+        expect(th).to.be.a(Function)
         expect(th.length).to.equal(0)
         expect(th.name).to.equal('thunk')
       })
@@ -217,7 +217,7 @@ describe('thunk', function() {
     it('should return a zero arity thunk', function() {
       var th = thunk(function() {})
 
-      expect(th).to.be.a('function')
+      expect(th).to.be.a(Function)
       expect(th.length).to.equal(0)
       expect(th.name).to.equal('thunk')
     })

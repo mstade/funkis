@@ -1,4 +1,4 @@
-var expect = require('chai').expect
+var expect = require('must')
   , gt     = require('../lib/gt')
 
 describe('gt', function() {

@@ -1,5 +1,5 @@
 var partial = require('../lib/partial')
-  , expect  = require('chai').expect
+  , expect  = require('must')
   , comp    = require('../lib/compose')
 
 describe('compose', function() {

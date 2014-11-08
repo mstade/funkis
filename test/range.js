@@ -64,7 +64,7 @@ describe('range', function() {
   })
 })
 
-var expect = require('chai').expect
+var expect = require('must')
   , range  = require('../lib/range')
   , each   = require('../lib/each')
   , take   = require('../lib/take')

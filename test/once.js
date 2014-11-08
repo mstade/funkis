@@ -1,4 +1,4 @@
-var expect = require('chai').expect
+var expect = require('must')
   , once   = require('../lib/once')
 
 describe('once', function() {
@@ -6,7 +6,7 @@ describe('once', function() {
     var ofn = once(fn)
 
     it('should return another function named `once`', function() {
-      expect(ofn).to.be.a('function')
+      expect(ofn).to.be.a(Function)
       expect(ofn.name).to.equal('once')
     })
 

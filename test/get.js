@@ -1,5 +1,5 @@
 const partial = require('../lib/partial')
-    , expect  = require('chai').expect
+    , expect  = require('must')
     , each    = require('../lib/each')
     , get     = require('../lib/get')
 

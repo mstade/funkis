@@ -23,7 +23,7 @@ describe('apply', function() {
   describe('when given a function `fn`', function() {
     describe('and no arguments', function(done) {
       it('should call the function without arguments', function(done) {      
-	var fn = function() {
+        var fn = function() {
           expect(arguments.length).to.equal(0)
           done()
         }
@@ -32,14 +32,14 @@ describe('apply', function() {
       })
 
       it('should proxy the functions return value', function() {
-	expect(apply(constantly(3))).to.equal(3)
+        expect(apply(constantly(3))).to.equal(3)
       })
 
       describe('and `fn` is bound', function() {
         it('should not affect the binding', function(done) {
-	  var owner = {}
+          var owner = {}
 
-	  var fn = function() {
+          var fn = function() {
             expect(arguments.length).to.equal(0)
             expect(this).to.equal(owner)
             done()
@@ -52,7 +52,7 @@ describe('apply', function() {
 
     describe('and when given arguments', function(done) {
       it('should call the function with arguments', function(done) {
-	var fn = function() {
+        var fn = function() {
           expect(slice(arguments)).to.eql([1, true, 'wibble'])
           done()
         }
@@ -61,14 +61,14 @@ describe('apply', function() {
       })
 
       it('should proxy the functions return value', function() {
-	expect(apply(constantly, [3])).to.be.a('function')
+        expect(apply(constantly, [3])).to.be.a(Function)
       })
 
       describe('and `fn` is bound', function() {
         it('should not affect the binding', function(done) {
-	  var owner = {}
+          var owner = {}
 
-	  var fn = function() {
+          var fn = function() {
             expect(slice(arguments)).to.eql([1, true, 'wibble'])
             expect(this).to.equal(owner)
             done()
@@ -82,7 +82,7 @@ describe('apply', function() {
 })
 
 var constantly = require('../lib/constantly')
-  , expect     = require('chai').expect
+  , expect     = require('must')
   , slice      = require('../lib/slice')
   , apply      = require('../lib/apply')
   , each       = require('../lib/each')
