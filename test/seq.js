@@ -1,4 +1,4 @@
-var expect = require('chai').expect
+var expect = require('must')
   , count  = require('../lib/count')
   , each   = require('../lib/each')
   , take   = require('../lib/take')
@@ -86,7 +86,7 @@ describe('seq', function() {
   describe('when given a string with unicode shenanigans', function() {
     it('should make a sequence of characters where code pairs are considered', function() {
       var chr = ['I', 'ñ', 't', 'ë', 'r', 'n', 'â', 't', 'i', 'ô', 'n', 'à', 'l', 'i', 'z', 'æ', 't', 'i', 'ø', 'n', '☃', '💩']
-          , str = seq(chr.join(''))
+        , str = seq(chr.join(''))
 
       expect(str.length).to.eql(chr.length)
 
@@ -114,7 +114,7 @@ describe('seq', function() {
       var s = seq(Math.random)
 
       each(take(5, s), function(n) {
-        expect(n).to.be.within(0, 1)
+        expect(n).to.be.between(0, 1)
       })
     })
   })

@@ -1,5 +1,5 @@
 var variadic = require('../lib/variadic')
-  , expect   = require('chai').expect
+  , expect   = require('must')
   , thunk    = require('../lib/thunk')
   , range    = require('../lib/range')
   , slice    = require('../lib/slice')

@@ -1,5 +1,5 @@
 var isEmpty = require('../lib/isEmpty')
-  , expect  = require('chai').expect
+  , expect  = require('must')
   , each    = require('../lib/each')
   , seq     = require('../lib/seq')
   , src     = require('../lib/src')

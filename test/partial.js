@@ -1,4 +1,4 @@
-var expect = require("chai").expect
+var expect = require("must")
   , $      = require("../lib/partial") 
 
 describe("`partial`", function() {

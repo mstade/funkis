@@ -1,4 +1,4 @@
-var expect = require('chai').expect
+var expect = require('must')
   , merge  = require('../lib/merge')
 
 describe('merge', function() {
@@ -8,7 +8,7 @@ describe('merge', function() {
         , bar = merge(foo)
 
       expect(foo).to.not.equal(bar)
-      expect(bar).to.have.key('wibble')
+      expect(bar).to.have.own('wibble')
       expect(bar.wibble).to.equal(1)
     })
   })
@@ -21,7 +21,7 @@ describe('merge', function() {
 
       expect(m).to.not.equal(a)
       expect(m).to.not.equal(b)
-      expect(m).to.have.keys('foo', 'bar')
+      expect(m).to.have.keys(['foo', 'bar'])
       expect(m.foo).to.equal(1)
       expect(m.bar).to.equal(2)
     })
@@ -31,7 +31,7 @@ describe('merge', function() {
         , b = { foo: 2, bar: 3 }
         , m = merge(a, b)
 
-      expect(m).to.have.keys('foo', 'bar')
+      expect(m).to.have.keys(['foo', 'bar'])
       expect(m.foo).to.equal(2)
       expect(m.bar).to.equal(3)
     })
@@ -47,7 +47,7 @@ describe('merge', function() {
       expect(m).to.not.equal(a)
       expect(m).to.not.equal(b)
       expect(m).to.not.equal(c)
-      expect(m).to.have.keys('foo', 'bar', 'baz')
+      expect(m).to.have.keys(['foo', 'bar', 'baz'])
       expect(m.foo).to.equal(1)
       expect(m.bar).to.equal(2)
       expect(m.baz).to.equal(3)
@@ -59,7 +59,7 @@ describe('merge', function() {
         , c = { baz: 5, foo: 6 }
         , m = merge(a, b, c)
 
-      expect(m).to.have.keys('foo', 'bar', 'baz')
+      expect(m).to.have.keys(['foo', 'bar', 'baz'])
       expect(m.foo).to.equal(6)
       expect(m.bar).to.equal(3)
       expect(m.baz).to.equal(5)

@@ -1,4 +1,4 @@
-var expect = require('chai').expect
+var expect = require('must')
   , assert = require('../lib/assert')
   , each   = require('../lib/each')
   , src    = require('../lib/src')
@@ -24,7 +24,7 @@ describe('assert', function() {
         })
 
         describe('and also given an instance of Error', function() {
-          it('should throw that error', function() {
+          it('should throw that instance', function() {
             var err = new Error('sad face')
             expect($(assert, x, err)).to.throw(err)
           })

@@ -1,5 +1,5 @@
 var trampoline = require('../lib/trampoline')
-  , expect     = require('chai').expect
+  , expect     = require('must')
   , thunk      = require('../lib/thunk')
   , each       = require('../lib/each')
 

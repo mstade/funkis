@@ -1,6 +1,6 @@
 var repeatedly = require('../lib/repeatedly')
   , partial    = require('../lib/partial')
-  , expect     = require('chai').expect
+  , expect     = require('must')
   , range      = require('../lib/range')
   , each       = require('../lib/each')
   , nth        = require('../lib/nth')

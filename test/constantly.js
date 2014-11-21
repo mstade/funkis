@@ -1,5 +1,5 @@
 var constantly = require('../lib/constantly')
-  , expect     = require('chai').expect
+  , expect     = require('must')
   , each       = require('../lib/each')
   , src        = require('../lib/src')
 

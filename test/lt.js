@@ -1,4 +1,4 @@
-var expect = require('chai').expect
+var expect = require('must')
   , lt     = require('../lib/lt')
 
 describe('lt', function() {
