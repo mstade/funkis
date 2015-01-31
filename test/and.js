@@ -1,5 +1,5 @@
 const constantly = require('../lib/constantly')
-    , expect     = require('chai').expect
+    , expect     = require('must')
     , and        = require('../lib/and')
 
 describe('`and`', function() {

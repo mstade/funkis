@@ -1,5 +1,6 @@
 module.exports =
-  { apply      : require('./lib/apply')
+  { and        : require('./lib/and')
+  , apply      : require('./lib/apply')
   , assert     : require('./lib/assert')
   , call       : require('./lib/call')
   , compose    : require('./lib/compose')
