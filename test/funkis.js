@@ -2,7 +2,7 @@ var fs     = require('fs')
   , path   = require('path')
   , each   = require('../lib/each')
   , funkis = require('../')
-  , expect = require('expect.js')
+  , expect = require('must')
 
 describe('funkis', function() {
   it('should export every function in lib/', function() {
@@ -11,7 +11,7 @@ describe('funkis', function() {
     })
 
     each(names, function(name) {
-      expect(funkis).to.contain.key(name)
+      expect(funkis).to.have.property(name)
     })
   })
 })
