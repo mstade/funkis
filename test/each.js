@@ -7,7 +7,7 @@ describe('each', function() {
   describe('when given a seq', function() {
     it('should call `fn` once for each item', function() {
       var l = [1, 2, 3]
-	, s = seq(l)
+        , s = seq(l)
 
       var i = 0
 

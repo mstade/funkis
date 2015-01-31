@@ -1,4 +1,4 @@
-#!/usr/bin/env node --harmony
+#!/usr/bin/env node
 
 ;(function() {
   var global = this
@@ -8,13 +8,13 @@
   global['reload'] = function() {
     Object.keys(require.cache)
       .forEach(function(k) {
-	delete require.cache[k]
+        delete require.cache[k]
       })
 
     fs.readdirSync(libdir)
       .forEach(function(lib) {
-	lib = lib.replace(/\.js$/, '')
-	global[lib] = require(libdir + '/' + lib)
+        lib = lib.replace(/\.js$/, '')
+        global[lib] = require(libdir + '/' + lib)
       })
   }
 

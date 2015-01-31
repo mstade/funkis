@@ -21,7 +21,7 @@ describe('identity', function() {
 
     describe('when given `' + str + '`', function() {
       it('should return `' + str + '`', function() {
-	var id = identity(x)
+        var id = identity(x)
 
         if (x !== x) { // NaN *sigh*
           expect(id).to.not.equal(id)

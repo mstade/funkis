@@ -16,7 +16,7 @@ describe('take', function() {
       , function(coll) {
         describe('and when given the collection `' + src(coll) + '`', function() {
           it('should return a lazy sequence of the first `n` items', function() {
-	    var s = take(3, coll)
+            var s = take(3, coll)
 
             expect(vec(s)).to.eql(slice(coll, 0, 3))
           })
