@@ -42,4 +42,5 @@ module.exports =
   , val         : require('./lib/val')
   , variadic    : require('./lib/variadic')
   , vec         : require('./lib/vec')
+  , when        : require('./lib/when')
   }
