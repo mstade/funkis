@@ -1,5 +1,6 @@
 var partial = require('../lib/partial')
   , expect  = require('must')
+  , range   = require('../lib/range')
   , nth     = require('../lib/nth')
   , $       = require('../lib/partial')
 
@@ -11,8 +12,8 @@ describe("`nth`", function() {
     })
 
     it("should throw an error if the index is out of bounds", function() {
-      expect($(nth, [1, 2, 3], 3)).to.throw("RangeError")
-      expect($(nth, range(3), 5)).to.throw("RangeError")
+      expect($(nth, [1, 2, 3], 3)).to.throw(RangeError)
+      expect($(nth, range(3), 5)).to.throw(RangeError)
     })
   })
 })
