@@ -9,7 +9,7 @@ describe('inc', function() {
   describe('when given a number `n`', function() {
     it('should increment that number by one and return the result', function() {
       each(range(100), function(n) {
-	expect(inc(n)).to.equal(n + 1)
+        expect(inc(n)).to.equal(n + 1)
       })
     })
   })
@@ -24,7 +24,7 @@ describe('inc', function() {
   describe('when given a value that is not a number', function() {
     it('should throw', function() {
       each([ 'foo', true, false, null, undefined, NaN ], function(x) {
-	expect($(inc, x)).to.throw()
+        expect($(inc, x)).to.throw()
       })
     })
   })

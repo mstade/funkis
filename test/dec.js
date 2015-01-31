@@ -9,7 +9,7 @@ describe('dec', function() {
   describe('when given a number `n`', function() {
     it('should decrement that number by one and return the result', function() {
       each(range(100), function(n) {
-	expect(dec(n)).to.equal(n - 1)
+        expect(dec(n)).to.equal(n - 1)
       })
     })
   })
@@ -24,7 +24,7 @@ describe('dec', function() {
   describe('when given a value that is not a number', function() {
     it('should throw', function() {
       each([ 'foo', true, false, null, undefined, NaN ], function(x) {
-	expect($(dec, x)).to.throw()
+        expect($(dec, x)).to.throw()
       })
     })
   })
