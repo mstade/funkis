@@ -14,7 +14,7 @@ describe('defprotocol', function() {
           , rest  : []
           })
 
-        expect(Seq).to.be.a('function')
+        expect(Seq).to.be.a(Function)
         expect(Seq.name).to.equal('Protocol')
       })
 

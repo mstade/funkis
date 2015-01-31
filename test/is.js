@@ -36,29 +36,29 @@ describe('is', function() {
   describe('when given two arguments that are identical', function() {
     it('should return `true`', function() {
       each(
-	[ true, false,
-	, -1, 0, 1, 3.14
-	, '', 'wibble'
-	, [], [1, 2, 3]
-	, {}, { foo: 1 }
-	, Function
-	, null, undefined
-	]
-	, function(x) {
-	  expect(is(x, x)).to.be.true
-	}
+        [ true, false,
+        , -1, 0, 1, 3.14
+        , '', 'wibble'
+        , [], [1, 2, 3]
+        , {}, { foo: 1 }
+        , Function
+        , null, undefined
+        ]
+        , function(x) {
+          expect(is(x, x)).to.be.true
+        }
       )
     })
   })
 
   describe('when testing for booleans', function() {
     each([ true, false ], function(x) {
-	describe('and when `x = '+x+'`', function() {
-	  it('should return true', function() {
-	    expect(is(Boolean, x)).to.be.true
-	    expect(is('boolean', x)).to.be.true
-	  })
-	})
+        describe('and when `x = '+x+'`', function() {
+          it('should return true', function() {
+            expect(is(Boolean, x)).to.be.true
+            expect(is('boolean', x)).to.be.true
+          })
+        })
       }
     )
 
@@ -73,12 +73,12 @@ describe('is', function() {
       ]
       ,
       function(x) {
-	describe('and when `x = '+src(x)+'`', function() {
-	  it('should return false', function() {
-	    expect(is(Boolean, x)).to.be.false
-	    expect(is('boolean', x)).to.be.false
-	  })
-	})
+        describe('and when `x = '+src(x)+'`', function() {
+          it('should return false', function() {
+            expect(is(Boolean, x)).to.be.false
+            expect(is('boolean', x)).to.be.false
+          })
+        })
       }
     )
   })
@@ -99,7 +99,7 @@ describe('is', function() {
       ]
       ,
       function(x) {
-	var n = is(Array, x)? x[1] : src(x)
+        var n = is(Array, x)? x[1] : src(x)
 
         is(Array, x) && (x = x[0])
 
@@ -256,7 +256,7 @@ describe('is', function() {
       ]
       ,
       function(x) {
-	var n = is(Array, x)? x[1] : src(x)
+        var n = is(Array, x)? x[1] : src(x)
 
         is(Array, x) && (x = x[0])
 
@@ -288,7 +288,7 @@ describe('is', function() {
       ]
       ,
       function(x) {
-	var n = is(Array, x)? x[1] : src(x)
+        var n = is(Array, x)? x[1] : src(x)
 
         is(Array, x) && (x = x[0])
 
@@ -317,7 +317,7 @@ describe('is', function() {
       ]
       ,
       function(x) {
-	var n = is(Array, x)? x[1] : src(x)
+        var n = is(Array, x)? x[1] : src(x)
 
         is(Array, x) && (x = x[0])
 

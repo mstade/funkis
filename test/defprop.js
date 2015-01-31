@@ -132,7 +132,7 @@ describe("`defprop`", function() {
             , function(field) {
               var target = {}
               defprop(target, field, { field: { enumerable: true } })
-              expect(target).to.have.key('field')
+              expect(target).to.have.property('field')
             }
           )
         })
