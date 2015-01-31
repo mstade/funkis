@@ -1,4 +1,4 @@
-var expect = require('chai').expect
+var expect = require('must')
   , every  = require('../lib/every')
   , each   = require('../lib/each')
   , src    = require('../lib/src')
@@ -8,13 +8,13 @@ describe('every', function() {
   describe('when given a seq', function() {
     it('should call `fn` so long as it keeps returning `true`', function() {
       var l = [1, 2, 3]
-	, s = seq(l)
+        , s = seq(l)
 
       var i = 0
 
       var fn = function(x) {
-	expect(x).to.equal(l[i++])
-	return true
+        expect(x).to.equal(l[i++])
+        return true
       }
 
       every(s, fn)
@@ -23,15 +23,15 @@ describe('every', function() {
 
     it('should stop calling `fn` when it returns `false`', function() {
       var l = [1, 2, 3]
-	, s = seq(l)
+        , s = seq(l)
 
       var i = 0
 
       var fn = function(x) {
-	if (x < 3) {
-	  expect(x).to.equal(l[i++])
-	  return true
-	}
+        if (x < 3) {
+          expect(x).to.equal(l[i++])
+          return true
+        }
       }
 
       every(s, fn)

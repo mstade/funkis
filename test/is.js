@@ -1,9 +1,13 @@
-var expect = require('must')
-  , range  = require('../lib/range')
-  , each   = require('../lib/each')
-  , seq    = require('../lib/seq')
-  , src    = require('../lib/src')
-  , is     = require('../lib/is')
+var defprotocol = require('../lib/defprotocol')
+  , assert      = require('../lib/assert')
+  , expect      = require('must')
+  , range       = require('../lib/range')
+  , each        = require('../lib/each')
+  , type        = require('../lib/type')
+  , isnt        = require('../lib/isnt')
+  , seq         = require('../lib/seq')
+  , src         = require('../lib/src')
+  , is          = require('../lib/is')
 
 describe('is', function() {
   describe('when given a single argument `x`', function() {
@@ -412,5 +416,54 @@ describe('is', function() {
         })
       }
     )
+  })
+
+  describe('when testing for protocols', function() {
+    describe('and when `x` implements the protocol', function() {
+      it('should return true', function() {
+        var Test = defprotocol('Test', {})
+
+        each(
+          [ [Number, 3]
+          , [Array, []]
+          , [Function, function() {}]
+          , [Boolean, true]
+          , [String, 'hello']
+          , [Object, {}]
+          , [Foo, new Foo]
+          ]
+          , function (data) {
+            var T = data[0]
+              , i = data[1]
+
+            Test(T, {})
+
+            assert(is(Test, Test(i)), 'Expected type `' + T.name + '` to implement protocol')
+          }
+        )
+      })
+
+      function Foo() {}
+    })
+
+    describe('but when `x` does not implement the protocol', function() {
+      it('should return false', function() {
+        var Test = defprotocol('Test', {})
+
+        each(
+          [ 3
+          , []
+          , function() {}
+          , true
+          , 'hello'
+          , {}
+          , new (function Foo() {})
+          ]
+          , function (i) {
+            assert(isnt(Test, Test(i)), 'Expected type `' + type(i) + '` to not implement protocol')
+          }
+        )
+      })
+    })
   })
 })
