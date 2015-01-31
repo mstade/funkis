@@ -7,8 +7,10 @@ var funkis = require('../')
 describe('funkis', function() {
   it('should export every function in lib/', function() {
     var names = fs.readdirSync(path.join(__dirname, '../lib')).map(function(file) {
-      return path.basename(file, '.js')
-    })
+      if (path.extname(file) === '.js') {
+        return path.basename(file, '.js')
+      }
+    }).filter(function(x) { return !!x })
 
     each(names, function(name) {
       expect(funkis).to.have.property(name)
