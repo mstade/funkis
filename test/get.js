@@ -12,7 +12,7 @@ describe('`get`', function() {
       })
     })
 
-    describe('and when the value of `key` is logically false', function() {
+    describe('and when the value of `map[key]` is logically false', function() {
       it('should still return the value of `key`', function() {
         each([null, undefined, false], function(x) {
           const map = { foo: x }
@@ -69,6 +69,16 @@ describe('`get`', function() {
           expect(get(nil, 'whatever', nope)).to.equal(nope)
         })
       })
+    })
+  })
+
+  describe('when given an array as `key`', function() {
+    it('should work recursively', function() {
+      const map = { a: { b: { c: { d: 'wibble' } } } }
+          , notFound = {}
+
+      expect(get(map, ['a', 'b', 'c', 'd'])).to.equal('wibble')
+      expect(get(map, ['a', 'b', 'c', 'x'], notFound)).to.equal(notFound)
     })
   })
 })
