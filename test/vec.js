@@ -26,7 +26,7 @@ describe('vec', function() {
     ], function(t) {
       describe('when given the ' + type(t[0]) + ' `' + src(t[0]) + '`', function() {
         it('should turn it into `' + src(t[1]) + '`', function() {
-	  var v = vec(t[0])
+        var v = vec(t[0])
           expect(v).to.eql(t[1])
         })
       })

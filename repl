@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 ;(function() {
   var global = this
     , libdir = __dirname + '/lib'
@@ -18,3 +20,7 @@
 
   reload()
 }())
+
+var repl = require('repl')
+
+repl.start({ prompt: 'fun > ', useGlobal: true })

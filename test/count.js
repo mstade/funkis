@@ -42,14 +42,14 @@ describe('count', function() {
   describe('when given a seq', function () {
     describe('and when the length is defined', function() {
       it('should return it', function() {
-	var s = seq([1, 2, 3])
+        var s = seq([1, 2, 3])
         expect(count(s)).to.equal(3)
       })
     })
 
     describe('but when the length is undefined', function() {
       it('should return undefined', function() {
-	var s = seq(Math.random)
+        var s = seq(Math.random)
         expect(count(s)).to.equal(undefined)
       })
     })

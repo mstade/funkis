@@ -32,7 +32,7 @@ describe('seq', function() {
         , [undefined]
         ]
         , function(arr) {
-	  var s = seq(arr)
+          var s = seq(arr)
 
           var i = 0
 
