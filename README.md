@@ -42,3 +42,7 @@ Status
 
 [![Build Status](http://img.shields.io/travis/mstade/funkis.svg?style=flat-square)](https://travis-ci.org/mstade/funkis)
 [![Coverage Status](http://img.shields.io/coveralls/mstade/funkis.svg?style=flat-square)](https://coveralls.io/r/mstade/funkis?branch=master)
+
+---
+
+[LICENSE](LICENSE)
