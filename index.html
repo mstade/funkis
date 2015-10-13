@@ -38,7 +38,7 @@
     <body>
         
         
-    <div class="book" data-level="0" data-basepath="." data-revision="Mon Sep 28 2015 11:21:13 GMT+0200 (CEST)">
+    <div class="book" data-level="0" data-basepath="." data-revision="Tue Oct 13 2015 20:27:46 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -268,7 +268,22 @@
                         <p><img src="https://raw.githubusercontent.com/mstade/funkis/master/logo.png" alt="Funkis"></p>
 <h1 id="funkis">Funkis</h1>
 <p>This library aims to be a fully fledged environment for functional programming in JavaScript. It provides a number of functions common to functional programming, ranging from low-level constructs to high-level abstractions.</p>
-<p>Funkis is work in progress, and APIs change quickly while the library is still being developed. Please don&apos;t use it for anything, or at least do so at your own risk. Beyond the <a href="test">tests</a> there is no documentation available &#x2013; good luck!</p>
+<p>Funkis is work in progress, and APIs change quickly while the library is still being developed. Please don&apos;t use it for anything, or at least do so at your own risk.</p>
+<h2 id="usage">Usage</h2>
+<p>Get funkis from npm:</p>
+<pre><code class="lang-bash">npm install --save funkis
+</code></pre>
+<p>Once installed as a dependency, it is possible to use funkis through the kitchen sink object that holds a reference to all funkis functions:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> f = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;funkis&apos;</span>)
+
+f.and(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>) <span class="hljs-comment">// 3</span>
+</code></pre>
+<p>Or, if you&apos;d rather, you can depend on the functions directly:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> and = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;funkis/lib/and&apos;</span>)
+
+and(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>) <span class="hljs-comment">// 3</span>
+</code></pre>
+<p>Further documentation is available in the <a href="http://madebystade.com/funkis/" target="_blank">online manual</a>, or the <a href="man">man</a> folder.</p>
 <h2 id="status">Status</h2>
 <p><a href="https://travis-ci.org/mstade/funkis" target="_blank"><img src="http://img.shields.io/travis/mstade/funkis.svg?style=flat-square" alt="Build Status"></a>
 <a href="https://coveralls.io/r/mstade/funkis?branch=master" target="_blank"><img src="http://img.shields.io/coveralls/mstade/funkis.svg?style=flat-square" alt="Coverage Status"></a></p>
@@ -290,10 +305,6 @@
 
         
 <script src="gitbook/app.js"></script>
-
-    
-    <script src="gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
 
 <script>
 require(["gitbook"], function(gitbook) {
